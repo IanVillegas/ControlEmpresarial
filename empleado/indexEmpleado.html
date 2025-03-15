@@ -9,7 +9,13 @@
     <script crossorigin="anonymous"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Autenticación -->
+    <script src="../empleado/auth.js"></script>
+    <script>verificarAutenticacion();</script>
+
     <script src="empleado.js"></script>
+
 </head>
 <body>
 
@@ -46,6 +52,7 @@
                 </li>
                 -->
             </ul>
+            <button class="btn btn" style="color: red" onclick="logout()">Log Out</button>
         </div>
     </div>
 </nav>
@@ -127,5 +134,8 @@
         </div>
     </div>
 </div>
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
+</footer>
 </body>
 </html>

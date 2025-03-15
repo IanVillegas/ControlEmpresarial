@@ -23,7 +23,8 @@ function cargarEmpleado(){
                     <td>${empleado.direccion}</td>
                     <td>${empleado.nacimiento}</td>
                     <td>
-                        <button onclick="editarEmpleado(${index})" class="btn btn-outline-success me-2">Editar</button>
+                        <button onclick="editarEmpleado(${index})" class="btn btn-outline-success me-2">
+                        <i class="bi bi-pencil"></i>Editar</button>
                         <button onclick="mostrarConfirmacionEliminacion(${index})" class="btn btn-outline-danger">Eliminar</button>
                     </td>
                 </tr>`;
@@ -67,6 +68,14 @@ function editarEmpleado(index) {
 }
 
 function guardarEmpleado(event) {
+
+    let form = event.target;
+    if(!form.checkValidity()){
+        event.stopPropagation();
+        form.classList.add('was-validated');
+        return;
+    }
+
     event.preventDefault();
     let nombre = document.getElementById("nombre").value;
     let apellido = document.getElementById("apellido").value;
@@ -92,3 +101,24 @@ function guardarEmpleado(event) {
         window.location.href = "indexEmpleado.html";
     }
 }
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()

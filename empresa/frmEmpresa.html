@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <title>C - Empresa</title>
 
+    <!-- Bootstrap -->
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
     <script crossorigin="anonymous"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Autenticación -->
+    <script src="../empleado/auth.js"></script>
+    <script>verificarAutenticacion();</script>
+
     <script src="empresa.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             let index = localStorage.getItem("editIndex");
@@ -57,21 +64,24 @@
                 </li>
                 -->
             </ul>
+            <button class="btn btn" style="color: red" onclick="logout()">Log Out</button>
         </div>
     </div>
 </nav>
 
 <div class="container mt-4">
     <h1 class="text-center mb-4">Crear Empresa</h1>
-    <form onsubmit="guardarEmpresa(event)">
+    <form class="needs-validation" novalidate onsubmit="guardarEmpresa(event)">
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="nombre" class="form-label" style="color: grey">Nombre:</label>
                 <input id="nombre" name="nombre" class="form-control" required/><br><br>
+                <div class="invalid-feedback">Espacio Obligatorio</div>
             </div>
             <div class="col-md-6">
                 <label for="ubicacion" class="form-label" style="color: grey">Ubicación:</label>
                 <input id="ubicacion" name="ubicacion" class="form-control" required/><br><br>
+                <div class="invalid-feedback">Espacio Obligatorio</div>
             </div>
             <div class="col-md-12 text-center mt-6">
                 <!--
@@ -86,5 +96,8 @@
         </div>
     </form>
 </div>
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
+</footer>
 </body>
 </html>

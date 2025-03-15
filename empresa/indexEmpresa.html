@@ -9,7 +9,13 @@
     <script crossorigin="anonymous"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Autenticación -->
+    <script src="../empleado/auth.js"></script>
+    <script>verificarAutenticacion();</script>
+
     <script src="empresa.js"></script>
+
     <!-- Esta clase le da a las columnas una mejor distribución con width: 150pixels -->
     <style>
         .acciones-col {
@@ -21,6 +27,7 @@
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
     <a class="navbar-brand" href="../index.html">
         <img src="../620a8448d36a01303fd76fd1_AmHeathAssoc-01.png" alt="Logo" style="height: 50px; margin-right: 10px;">
         <!--SIUA-->
@@ -51,6 +58,7 @@
                 </li>
                 -->
             </ul>
+            <button class="btn btn" style="color: red" onclick="logout()">Log Out</button>
         </div>
     </div>
 </nav>
@@ -130,5 +138,8 @@
         </div>
     </div>
 </div>
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
+</footer>
 </body>
 </html>

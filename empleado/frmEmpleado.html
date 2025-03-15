@@ -9,7 +9,13 @@
     <script crossorigin="anonymous"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Autenticación -->
+    <script src="../empleado/auth.js"></script>
+    <script>verificarAutenticacion();</script>
+
     <script src="empleado.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             let index = localStorage.getItem("editIndex");
@@ -61,33 +67,39 @@
                 </li>
                 -->
             </ul>
+            <button class="btn btn" style="color: red" onclick="logout()">Log Out</button>
         </div>
     </div>
 </nav>
 
 <div class="container mt-4">
     <h1 class="text-center mb-4">Crear Empleados</h1>
-    <form onsubmit="guardarEmpleado(event)">
+    <form class="needs-validation" novalidate onsubmit="guardarEmpleado(event)">
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="nombre" class="form-label" style="color: grey">Nombre:</label>
                 <input id="nombre" name="nombre" class="form-control" required/><br><br>
+                <div class="invalid-feedback">Espacio Obligatorio</div>
             </div>
             <div class="col-md-6">
                 <label for="apellido" class="form-label" style="color: grey">Apellido:</label>
                 <input id="apellido" name="apellido" class="form-control" required/><br><br>
+                <div class="invalid-feedback">Espacio Obligatorio</div>
             </div>
             <div class="col-md-6">
                 <label for="id" class="form-label" style="color: grey">Identificación:</label>
                 <input type="number" id="id" name="id" class="form-control" required/><br><br>
+                <div class="invalid-feedback">Espacio Obligatorio</div>
             </div>
             <div class="col-md-6">
                 <label for="correo" class="form-label" style="color: grey">Correo:</label>
                 <input type="email" id="correo" name="correo" class="form-control" required/><br><br>
+                <div class="invalid-feedback">Espacio Obligatorio</div>
             </div>
             <div class="col-md-6">
                 <label for="direccion" class="form-label" style="color: grey">Dirección:</label>
                 <input id="direccion" name="direccion" class="form-control" required/><br><br>
+                <div class="invalid-feedback">Espacio Obligatorio</div>
             </div>
             <div class="col-md-6">
                 <label for="nacimiento" class="form-label" style="color: grey">Fecha de Nacimiento:</label>
@@ -102,5 +114,8 @@
         </div>
     </form>
 </div>
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
+</footer>
 </body>
 </html>
