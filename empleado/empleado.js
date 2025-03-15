@@ -24,8 +24,9 @@ function cargarEmpleado(){
                     <td>${empleado.nacimiento}</td>
                     <td>
                         <button onclick="editarEmpleado(${index})" class="btn btn-outline-success me-2">
-                        <i class="bi bi-pencil"></i>Editar</button>
-                        <button onclick="mostrarConfirmacionEliminacion(${index})" class="btn btn-outline-danger">Eliminar</button>
+                        <i class="bi bi-pen-fill"></i>Editar</button>
+                        <button onclick="mostrarConfirmacionEliminacion(${index})" class="btn btn-outline-danger">
+                        <i class="bi bi-trash2-fill"></i>Eliminar</button>
                     </td>
                 </tr>`;
             tbody.innerHTML += fila;

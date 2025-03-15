@@ -20,8 +20,10 @@ function cargarEmpresas() {
                     <td>${empresa.ubicacion}</td>
                     <td>
                     <div class="d-flex"> <!-- Con esta clase los botones no se colocan uno encima del otro, se veía feo-->
-                        <button onclick="editarEmpresa(${index})" class="btn btn-outline-success me-2">Editar</button>
-                        <button onclick="mostrarConfirmacionEliminacion(${index})" class="btn btn-outline-danger">Eliminar</button>
+                        <button onclick="editarEmpresa(${index})" class="btn btn-outline-success me-2">
+                        <i class="bi bi-pen-fill"></i>Editar</button>
+                        <button onclick="mostrarConfirmacionEliminacion(${index})" class="btn btn-outline-danger">
+                        <i class="bi bi-trash2-fill"></i>Eliminar</button>
                     </div>
                     </td>
                 </tr>`;
