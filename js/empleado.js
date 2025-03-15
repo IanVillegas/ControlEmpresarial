@@ -69,15 +69,13 @@ function editarEmpleado(index) {
 }
 
 function guardarEmpleado(event) {
-
+    event.preventDefault(); // Evitar la recarga del formulario
     let form = event.target;
     if(!form.checkValidity()){
         event.stopPropagation();
         form.classList.add('was-validated');
         return;
     }
-
-    event.preventDefault();
     let nombre = document.getElementById("nombre").value;
     let apellido = document.getElementById("apellido").value;
     let id = document.getElementById("id").value;

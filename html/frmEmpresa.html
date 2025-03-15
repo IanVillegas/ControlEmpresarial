@@ -1,125 +1,130 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>C - Empresa</title>
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <title>C - Empresa</title>
 
-    <!-- Bootstrap CSS -->
-    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
-    <script crossorigin="anonymous"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+            <!-- Bootstrap CSS -->
+            <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+                  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
+            <script crossorigin="anonymous"
+                    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../css/style.css">
+            <!-- CSS -->
+            <link rel="stylesheet" href="../css/style.css">
 
-    <!-- Importacion JS -->
-    <script src="../js/auth.js"></script>
-    <script>verificarAutenticacion();</script>
-    <script src="../js/empresa.js"></script>
+            <!-- Importacion JS -->
+            <script src="../js/auth.js"></script>
+            <script>verificarAutenticacion();</script>
+            <script src="../js/empresa.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            let index = localStorage.getItem("editIndex");
-            if (index !== null) {
-                let empresas = JSON.parse(localStorage.getItem("empresas")) || [];
-                let empresa = empresas[index];
-                document.getElementById("nombre").value = empresa.nombre;
-                document.getElementById("ubicacion").value = empresa.ubicacion;
-            }
-        });
-    </script>
-</head>
-<body>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    let index = localStorage.getItem("editIndex");
+                    if (index !== null) {
+                        let empresas = JSON.parse(localStorage.getItem("empresas")) || [];
+                        let empresa = empresas[index];
+                        document.getElementById("nombre").value = empresa.nombre;
+                        document.getElementById("ubicacion").value = empresa.ubicacion;
+                    }
+                });
+            </script>
+        </head>
+        <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-            <img src="../img/icoSIUA.png" alt="Logo" style="height: 50px; margin-right: 10px;">
-            <!--SIUA-->
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                        <i class="bi bi-house-door-fill"></i>
-                        Inicio</a>
-                </li>
-                <!-- Dropdown para EMPLEADO -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="empleadoDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-badge-fill"></i>
-                        Empleado
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="empleadoDropdown">
-                        <li><a class="dropdown-item" href="frmEmpleado.html">
-                            <i class="bi bi-person-fill-add"></i>
-                            Registrar Empleado</a></li>
-                        <li><a class="dropdown-item" href="indexEmpleado.html">
-                            <i class="bi bi-person-lines-fill"></i>
-                            Lista de Empleados</a></li>
-                    </ul>
-                </li>
-
-                <!-- Dropdown para EMPRESA -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="empresaDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-building-fill"></i>
-                        Empresa
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
-                        <li><a class="dropdown-item" href="frmEmpresa.html">
-                            <i class="bi bi-building-fill-add"></i>
-                            Registrar Empresa</a></li>
-                        <li><a class="dropdown-item" href="indexEmpresa.html">
-                            <i class="bi bi-list-ul"></i>
-                            Lista de Empresas</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <button class="btn btn" style="color: red" onclick="logout()">Log Out</button>
-        </div>
-    </div>
-</nav>
-
-<div class="container mt-4">
-    <h1 class="text-center mb-4">Crear Empresa</h1>
-    <form class="needs-validation" novalidate onsubmit="guardarEmpresa(event)">
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="nombre" class="form-label" style="color: grey">Nombre:</label>
-                <input id="nombre" name="nombre" class="form-control" required/><br><br>
-                <div class="invalid-feedback">Espacio Obligatorio</div>
-            </div>
-            <div class="col-md-6">
-                <label for="ubicacion" class="form-label" style="color: grey">Ubicación:</label>
-                <input id="ubicacion" name="ubicacion" class="form-control" required/><br><br>
-                <div class="invalid-feedback">Espacio Obligatorio</div>
-            </div>
-            <div class="col-md-12 text-center mt-6">
-                <!--
-                <button type="submit" class="btn btn-primary me-2" style="background-color: green; color: white; border: none">Guardar</button>
-                <button type="button" class="btn btn-secondary" style="background-color: firebrick; color: white; border: none" onclick="window.location.href = 'indexEmpresa.html'">Cancelar</button>
-                -->
-                <button type="submit" class="btn btn-outline-success me-2">Guardar</button>
-                <button type="button" class="btn btn-outline-danger"
-                        onclick="window.location.href = 'indexEmpresa.html'">Cancelar
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="../img/icoSIUA.png" alt="Logo" style="height: 50px; margin-right: 10px;">
+                    <!--SIUA-->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="bi bi-house-door-fill"></i>
+                                Inicio</a>
+                        </li>
+                        <!-- Dropdown para EMPLEADO -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="empleadoDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-badge-fill"></i>
+                                Empleado
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="empleadoDropdown">
+                                <li><a class="dropdown-item" href="frmEmpleado.html">
+                                    <i class="bi bi-person-fill-add"></i>
+                                    Registrar Empleado</a></li>
+                                <li><a class="dropdown-item" href="indexEmpleado.html">
+                                    <i class="bi bi-person-lines-fill"></i>
+                                    Lista de Empleados</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dropdown para EMPRESA -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="empresaDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-building-fill"></i>
+                                Empresa
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
+                                <li><a class="dropdown-item" href="frmEmpresa.html">
+                                    <i class="bi bi-building-fill-add"></i>
+                                    Registrar Empresa</a></li>
+                                <li><a class="dropdown-item" href="indexEmpresa.html">
+                                    <i class="bi bi-list-ul"></i>
+                                    Lista de Empresas</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <button class="btn btn" style="color: red" onclick="logout()">Log Out</button>
+                </div>
             </div>
+        </nav>
+
+        <div class="container mt-4">
+            <h1 class="text-center mb-4">Crear Empresa</h1>
+            <form class="needs-validation" novalidate onsubmit="guardarEmpresa(event)">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input id="nombre" name="nombre" class="form-control w-100" placeholder="Nombre" required/><br><br>
+                        <label for="nombre" style="color: grey">Nombre:</label>
+                        <div class="invalid-feedback">Espacio Obligatorio</div>
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                        <input id="ubicacion" name="ubicacion" class="form-control w-100" placeholder="Ubicacion"
+                               required/><br><br>
+                        <label for="ubicacion" style="color: grey">Ubicación:</label>
+                        <div class="invalid-feedback">Espacio Obligatorio</div>
+                    </div>
+                </div>
+                    <div class="col-md-12 text-center mt-6">
+                        <!--
+                        <button type="submit" class="btn btn-primary me-2" style="background-color: green; color: white; border: none">Guardar</button>
+                        <button type="button" class="btn btn-secondary" style="background-color: firebrick; color: white; border: none" onclick="window.location.href = 'indexEmpresa.html'">Cancelar</button>
+                        -->
+                        <button type="submit" class="btn btn-outline-success me-2">Guardar</button>
+                        <button type="button" class="btn btn-outline-danger"
+                                onclick="window.location.href = 'indexEmpresa.html'">Cancelar
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
-<footer class="bg-dark text-white text-center py-3 mt-5">
-    &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
-</footer>
-</body>
-</html>
+        <footer class="bg-dark text-white text-center py-3 mt-5">
+            &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
+        </footer>
+        </body>
+        </html>

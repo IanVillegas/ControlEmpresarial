@@ -58,7 +58,7 @@
                 </li>
                 <!-- Dropdown para EMPLEADO -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="empleadoDropdown" role="button"
+                    <a class="nav-link dropdown-toggle active" href="#" id="empleadoDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-person-badge-fill"></i>
                         Empleado
@@ -100,34 +100,53 @@
     <form class="needs-validation" novalidate onsubmit="guardarEmpleado(event)">
         <div class="row mb-3">
             <div class="col-md-6">
-                <label for="nombre" class="form-label" style="color: grey">Nombre:</label>
-                <input id="nombre" name="nombre" class="form-control" required/><br><br>
-                <div class="invalid-feedback">Espacio Obligatorio</div>
+                <div class="form-floating mb-3">
+                    <input type="text" id="nombre" name="nombre" class="form-control w-100" placeholder="Nombre" required>
+                    <label for="nombre">Nombre</label>
+                    <div class="invalid-feedback">Espacio Obligatorio</div>
+                </div>
             </div>
+
             <div class="col-md-6">
-                <label for="apellido" class="form-label" style="color: grey">Apellido:</label>
-                <input id="apellido" name="apellido" class="form-control" required/><br><br>
-                <div class="invalid-feedback">Espacio Obligatorio</div>
+                <div class="form-floating mb-3">
+                    <input type="text" id="apellido" name="apellido" class="form-control w-100" placeholder="Apellido" required>
+                    <label for="apellido">Apellido</label>
+                    <div class="invalid-feedback">Espacio Obligatorio</div>
+                </div>
             </div>
+
             <div class="col-md-6">
-                <label for="id" class="form-label" style="color: grey">Identificación:</label>
-                <input type="number" id="id" name="id" class="form-control" required/><br><br>
-                <div class="invalid-feedback">Espacio Obligatorio</div>
+                <div class="form-floating mb-3">
+                    <input type="number" id="id" name="id" class="form-control w-100" placeholder="Identificación" required>
+                    <label for="id">Identificación</label>
+                    <div class="invalid-feedback">Espacio Obligatorio</div>
+                </div>
             </div>
+
             <div class="col-md-6">
-                <label for="correo" class="form-label" style="color: grey">Correo:</label>
-                <input type="email" id="correo" name="correo" class="form-control" required/><br><br>
-                <div class="invalid-feedback">Espacio Obligatorio</div>
+                <div class="form-floating mb-3">
+                    <input type="email" id="correo" name="correo" class="form-control w-100" placeholder="Correo" required>
+                    <label for="correo">Correo</label>
+                    <div class="invalid-feedback">Espacio Obligatorio</div>
+                </div>
             </div>
+
             <div class="col-md-6">
-                <label for="direccion" class="form-label" style="color: grey">Dirección:</label>
-                <input id="direccion" name="direccion" class="form-control" required/><br><br>
-                <div class="invalid-feedback">Espacio Obligatorio</div>
+                <div class="form-floating mb-3">
+                    <input type="text" id="direccion" name="direccion" class="form-control w-100" placeholder="Dirección" required>
+                    <label for="direccion">Dirección</label>
+                    <div class="invalid-feedback">Espacio Obligatorio</div>
+                </div>
             </div>
+
             <div class="col-md-6">
-                <label for="nacimiento" class="form-label" style="color: grey">Fecha de Nacimiento:</label>
-                <input type="date" id="nacimiento" name="nacimiento" class="form-control" required/><br><br>
+                <div class="form-floating mb-3">
+                    <input type="date" id="nacimiento" name="nacimiento" class="form-control w-100" required>
+                    <label for="nacimiento">Fecha de Nacimiento</label>
+                    <div class="invalid-feedback">Espacio Obligatorio</div>
+                </div>
             </div>
+
             <div class="col-md-12 text-center mt-6">
                 <button type="submit" class="btn btn-outline-success me-2">Guardar</button>
                 <button type="button" class="btn btn-outline-danger"

@@ -18,7 +18,7 @@ function cargarEmpresas() {
             let fila = `<tr>
                     <td>${empresa.nombre}</td>
                     <td>${empresa.ubicacion}</td>
-                    <td>
+                    <td class="acciones">
                     <div class="d-flex"> <!-- Con esta clase los botones no se colocan uno encima del otro, se veía feo-->
                         <button onclick="editarEmpresa(${index})" class="btn btn-outline-success me-2">
                         <i class="bi bi-pen-fill"></i>Editar</button>
@@ -70,6 +70,13 @@ function editarEmpresa(index) {
 function guardarEmpresa(event) {
 
     event.preventDefault();
+    let form = event.target;
+    if(!form.checkValidity()){
+        event.stopPropagation();
+        form.classList.add('was-validated');
+        return;
+    }
+
     let nombre = document.getElementById("nombre").value;
     let ubicacion = document.getElementById("ubicacion").value;
 
@@ -90,3 +97,23 @@ function guardarEmpresa(event) {
         window.location.href = "indexEmpresa.html";
     }
 }
+
+(function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()
