@@ -15,11 +15,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
 
-    <!-- Importacion JS -->
-    <script src="../js/auth.js"></script>
-    <script>verificarAutenticacion();</script>
-    <script src="../js/empleado.js"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             let index = localStorage.getItem("editIndex");
@@ -32,12 +27,18 @@
                 document.getElementById("correo").value = empleado.correo;
                 document.getElementById("direccion").value = empleado.direccion;
                 document.getElementById("nacimiento").value = empleado.nacimiento;
+                document.getElementById("telefono").value = empleado.telefono;
+                document.getElementById("cargo").value = empleado.cargo;
+                document.getElementById("estado").value = empleado.estado;
+                document.getElementById("empresaAsociada").value = empleado.empresa || "";
             }
+            cargarEmpresasEnSelect();
         });
     </script>
 </head>
 <body>
-
+<div class="wrapper">
+    <div class="content">
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
@@ -99,10 +100,11 @@
     <h1 class="text-center mb-4">Crear Empleados</h1>
     <form class="needs-validation" novalidate onsubmit="guardarEmpleado(event)">
         <div class="row mb-3">
+
             <div class="col-md-6">
                 <div class="form-floating mb-3">
                     <input type="text" id="nombre" name="nombre" class="form-control w-100" placeholder="Nombre" required>
-                    <label for="nombre">Nombre</label>
+                    <label for="nombre" style="color: grey">Nombre:</label>
                     <div class="invalid-feedback">Espacio Obligatorio</div>
                 </div>
             </div>
@@ -110,7 +112,7 @@
             <div class="col-md-6">
                 <div class="form-floating mb-3">
                     <input type="text" id="apellido" name="apellido" class="form-control w-100" placeholder="Apellido" required>
-                    <label for="apellido">Apellido</label>
+                    <label for="apellido" style="color: grey">Apellido:</label>
                     <div class="invalid-feedback">Espacio Obligatorio</div>
                 </div>
             </div>
@@ -118,7 +120,7 @@
             <div class="col-md-6">
                 <div class="form-floating mb-3">
                     <input type="number" id="id" name="id" class="form-control w-100" placeholder="Identificación" required>
-                    <label for="id">Identificación</label>
+                    <label for="id" style="color: grey">Identificación:</label>
                     <div class="invalid-feedback">Espacio Obligatorio</div>
                 </div>
             </div>
@@ -126,7 +128,7 @@
             <div class="col-md-6">
                 <div class="form-floating mb-3">
                     <input type="email" id="correo" name="correo" class="form-control w-100" placeholder="Correo" required>
-                    <label for="correo">Correo</label>
+                    <label for="correo" style="color: grey">Correo:</label>
                     <div class="invalid-feedback">Espacio Obligatorio</div>
                 </div>
             </div>
@@ -134,15 +136,53 @@
             <div class="col-md-6">
                 <div class="form-floating mb-3">
                     <input type="text" id="direccion" name="direccion" class="form-control w-100" placeholder="Dirección" required>
-                    <label for="direccion">Dirección</label>
+                    <label for="direccion" style="color: grey">Dirección:</label>
                     <div class="invalid-feedback">Espacio Obligatorio</div>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-floating mb-3">
-                    <input type="date" id="nacimiento" name="nacimiento" class="form-control w-100" required>
-                    <label for="nacimiento">Fecha de Nacimiento</label>
+                    <input type="date" id="nacimiento" name="nacimiento" class="form-control w-100" placeholder="Fecha de Nacimiento"
+                           required>
+                    <label for="nacimiento" style="color: grey">Fecha de Nacimiento:</label>
+                    <div class="invalid-feedback">Espacio Obligatorio</div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="text" id="telefono" name="telefono" class="form-control w-100" placeholder="Teléfono"
+                           required>
+                    <label for="telefono" style="color: grey">Teléfono:</label>
+                    <div class="invalid-feedback">Espacio Obligatorio</div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="text" id="cargo" name="cargo" class="form-control w-100" placeholder="Cargo"
+                           required>
+                    <label for="cargo" style="color: grey">Cargo:</label>
+                    <div class="invalid-feedback">Espacio Obligatorio</div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <input type="text" id="estado" name="estado" class="form-control w-100" placeholder="Estado"
+                           required>
+                    <label for="estado" style="color: grey">Estado:</label>
+                    <div class="invalid-feedback">Espacio Obligatorio</div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
+                    <Select id="empresaAsociada" name="empresaAsociada" class="form-control w-100" required>
+                    <option value="">Seleccione una empresa</option>
+                    </select>
+                    <label for="empresaAsociada" style="color: grey">Empresa Asociada:</label>
                     <div class="invalid-feedback">Espacio Obligatorio</div>
                 </div>
             </div>
@@ -153,11 +193,18 @@
                         onclick="window.location.href = 'indexEmpleado.html'">Cancelar
                 </button>
             </div>
+
         </div>
     </form>
+</div>
 </div>
 <footer class="bg-dark text-white text-center py-3 mt-5">
     &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
 </footer>
+</div>
+<!-- Importacion JS -->
+<script src="../js/auth.js"></script>
+<script>verificarAutenticacion();</script>
+<script src="../js/empleado.js"></script>
 </body>
 </html>

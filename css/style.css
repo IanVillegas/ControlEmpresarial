@@ -1,14 +1,15 @@
     html, body {
         height: 100%;
         margin: 0;
+        overflow: auto;
     }
 
+/* En caso de que haya poco contenido en las páginas, para mantener el footer abajo "wrapper y content"*/
     .wrapper {
         min-height: 100%;
         display: flex;
         flex-direction: column;
     }
-
     .content {
         flex: 1;
     }
@@ -18,9 +19,9 @@
         color: white;
         text-align: center;
         padding: 1rem;
-        position: absolute;
-        bottom: 0;
+        position: relative;
         width: 100%;
+        margin-top: auto;
     }
 
     /*login*/
@@ -77,4 +78,40 @@
     /* Ajusta los botones para que mantengan su tamaño */
     .acciones button {
         white-space: nowrap; /* Evita que el texto de los botones se divida en varias líneas */
+    }
+
+/* Sección de DataTable */
+    /* Ocultar íconos de ordenamiento */
+    table.dataTable thead .sorting:before,
+    table.dataTable thead .sorting:after,
+    table.dataTable thead .sorting_asc:before,
+    table.dataTable thead .sorting_asc:after,
+    table.dataTable thead .sorting_desc:before,
+    table.dataTable thead .sorting_desc:after {
+        content: "" !important;
+    }
+
+    /* Botones de paginación más claros */
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 0.5rem 1rem;
+        margin: 0 2px;
+        border-radius: 0.5rem;
+        border: 1px solid #ccc;
+        background-color: #f8f9fa;
+    }
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: #0d6efd;
+        color: white !important;
+        border: none;
+    }
+    .dataTables_wrapper .dataTables_info {
+        margin-top: 1rem;
+        font-style: italic;
+        color: #555;
+    }
+/* Tablas de Bootstrap*/
+    table.dataTable td:last-child,
+    table.dataTable th:last-child {
+        min-width: 150px;
+        white-space: nowrap;
     }

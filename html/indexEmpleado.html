@@ -12,6 +12,17 @@
                 src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
+        <!-- DataTables -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+
         <!-- CSS -->
         <link rel="stylesheet" href="../css/style.css">
 
@@ -22,7 +33,8 @@
 
     </head>
     <body>
-
+    <div class="wrapper">
+        <div class="content">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -80,21 +92,25 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <div class="container mt-4 mb-5">
         <h1 class="text-center mb-4">Empleados Registrados</h1>
         <div class="text-center mb-3">
             <a href="frmEmpleado.html"></a>
         </div>
-        <div class="table-responsive">
-            <table class="table table-striped table-hover">
+        <div class="table-responsive" style="overflow-x: auto;">
+            <table class="table table-striped table-hover nowrap" style="width: 100%;">
                 <thead class="table-dark">
                 <tr>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>Identificación</th>
+                    <th>ID</th>
                     <th>Correo</th>
                     <th>Dirección</th>
-                    <th>Fecha de Nacimiento</th>
+                    <th>Nacimiento</th>
+                    <th>Teléfono</th>
+                    <th>Cargo</th>
+                    <th>Estado</th>
+                    <th>Empresa</th>
                     <th>Acciones</th>
                 </tr>
                 </thead>
@@ -157,8 +173,10 @@
             </div>
         </div>
     </div>
+        </div>
     <footer class="bg-dark text-white text-center py-3 mt-5">
         &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
     </footer>
+    </div>
     </body>
     </html>

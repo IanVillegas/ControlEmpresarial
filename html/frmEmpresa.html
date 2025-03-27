@@ -33,7 +33,8 @@
             </script>
         </head>
         <body>
-
+        <div class="wrapper">
+            <div class="content">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
@@ -95,21 +96,33 @@
             <h1 class="text-center mb-4">Crear Empresa</h1>
             <form class="needs-validation" novalidate onsubmit="guardarEmpresa(event)">
                 <div class="row mb-3">
+
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
                             <input id="nombre" name="nombre" class="form-control w-100" placeholder="Nombre" required/><br><br>
-                        <label for="nombre" style="color: grey">Nombre:</label>
-                        <div class="invalid-feedback">Espacio Obligatorio</div>
+                            <label for="nombre" style="color: grey">Nombre:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
                     </div>
-                    </div>
+
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                        <input id="ubicacion" name="ubicacion" class="form-control w-100" placeholder="Ubicacion"
+                            <input id="ubicacion" name="ubicacion" class="form-control w-100" placeholder="Ubicacion"
                                required/><br><br>
-                        <label for="ubicacion" style="color: grey">Ubicación:</label>
-                        <div class="invalid-feedback">Espacio Obligatorio</div>
+                            <label for="ubicacion" style="color: grey">Ubicación:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="number" id="cantPersonas" name="cantPersonas" class="form-control w-100"
+                                   placeholder="Cantidad de Personas" required/><br><br>
+                            <label for="cantPersonas" style="color: grey">Cantidad de Personas:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
+                    </div>
+
                     <div class="col-md-12 text-center mt-6">
                         <!--
                         <button type="submit" class="btn btn-primary me-2" style="background-color: green; color: white; border: none">Guardar</button>
@@ -120,11 +133,14 @@
                                 onclick="window.location.href = 'indexEmpresa.html'">Cancelar
                         </button>
                     </div>
+
                 </div>
             </form>
+        </div>
         </div>
         <footer class="bg-dark text-white text-center py-3 mt-5">
             &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
         </footer>
+        </div>
         </body>
         </html>

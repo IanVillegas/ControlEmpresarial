@@ -5,6 +5,38 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("confirmarEliminacionBtn").addEventListener("click", confirmarEliminacion);
 });
 
+function guardarEmpresa(event) {
+
+    event.preventDefault();
+    let form = event.target;
+    if(!form.checkValidity()){
+        event.stopPropagation();
+        form.classList.add('was-validated');
+        return;
+    }
+
+    let nombre = document.getElementById("nombre").value;
+    let ubicacion = document.getElementById("ubicacion").value;
+    let cantPersonas = document.getElementById("cantPersonas").value;
+
+    if (!nombre || !ubicacion || !cantPersonas) {
+        alert("Todos los campos son obligatorios");
+        return;
+    } else {
+        let empresa = {nombre, ubicacion, cantPersonas};
+        let empresas = JSON.parse(localStorage.getItem("empresas")) || [];
+
+        let index = localStorage.getItem("editIndex");
+        if (index !== null) {
+            empresas[index] = empresa;
+        } else {
+            empresas.push(empresa);
+        }
+        localStorage.setItem("empresas", JSON.stringify(empresas));
+        window.location.href = "indexEmpresa.html";
+    }
+}
+
 function cargarEmpresas() {
     let empresas = JSON.parse(localStorage.getItem("empresas")) || [];
     let tbody = document.getElementById("empresas-list");
@@ -18,6 +50,7 @@ function cargarEmpresas() {
             let fila = `<tr>
                     <td>${empresa.nombre}</td>
                     <td>${empresa.ubicacion}</td>
+                    <td>${empresa.cantPersonas}</td>
                     <td class="acciones">
                     <div class="d-flex"> <!-- Con esta clase los botones no se colocan uno encima del otro, se veía feo-->
                         <button onclick="editarEmpresa(${index})" class="btn btn-outline-success me-2">
@@ -65,37 +98,6 @@ function eliminarEmpresa(index) {
 function editarEmpresa(index) {
     localStorage.setItem("editIndex", index);
     window.location.href = "frmEmpresa.html";
-}
-
-function guardarEmpresa(event) {
-
-    event.preventDefault();
-    let form = event.target;
-    if(!form.checkValidity()){
-        event.stopPropagation();
-        form.classList.add('was-validated');
-        return;
-    }
-
-    let nombre = document.getElementById("nombre").value;
-    let ubicacion = document.getElementById("ubicacion").value;
-
-    if (!nombre || !ubicacion) {
-        alert("Todos los campos son obligatorios");
-        return;
-    } else {
-        let empresa = {nombre, ubicacion};
-        let empresas = JSON.parse(localStorage.getItem("empresas")) || [];
-
-        let index = localStorage.getItem("editIndex");
-        if (index !== null) {
-            empresas[index] = empresa;
-        } else {
-            empresas.push(empresa);
-        }
-        localStorage.setItem("empresas", JSON.stringify(empresas));
-        window.location.href = "indexEmpresa.html";
-    }
 }
 
 (function () {
