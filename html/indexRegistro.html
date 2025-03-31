@@ -111,47 +111,48 @@
                             <i class="bi bi-door-closed-fill"></i> LogOut
                         </button>
                     </div>
+
                 </div>
             </div>
         </nav>
 
-<div class="container mt-5">
-        <h1 class="text-center mb-4">Registros de Entradas y Salidas</h1>
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <a href="frmRegistro.html" class="btn btn-primary">
-            <i class="bi bi-plus-circle me-1"></i> Nuevo Registro
-        </a>
+    <div class="container mt-5">
+            <h1 class="text-center mb-4">Registros de Entradas y Salidas</h1>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="frmRegistro.html" class="btn btn-primary">
+                <i class="bi bi-plus-circle me-1"></i> Nuevo Registro
+            </a>
+        </div>
+        <div class="table-responsive">
+            <table id="tablaRegistros" class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Persona</th>
+                    <th>Oficina</th>
+                    <th>Tipo</th>
+                    <th>Fecha y Hora</th>
+                </tr>
+                </thead>
+                <tbody id="registros-list">
+                <!-- Contenido generado dinámicamente -->
+                </tbody>
+            </table>
+        </div>
     </div>
-    <div class="table-responsive">
-        <table id="tablaRegistros" class="table table-striped table-hover">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Persona</th>
-                <th>Oficina</th>
-                <th>Tipo</th>
-                <th>Fecha y Hora</th>
-            </tr>
-            </thead>
-            <tbody id="registros-list">
-            <!-- Contenido generado dinámicamente -->
-            </tbody>
-        </table>
-    </div>
-</div>
-<!-- TOASTS -->
-<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
-    <div id="toast-mensaje" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="d-flex">
-            <div class="toast-body" id="toast-texto">Mensaje de ejemplo</div>
-            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    <!-- TOASTS -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+        <div id="toast-mensaje" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toast-texto">Mensaje de ejemplo</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
         </div>
     </div>
 </div>
-</div>
-<footer class="bg-dark text-white text-center py-3 mt-5">
-    &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
-</footer>
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
+    </footer>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
