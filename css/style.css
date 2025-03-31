@@ -1,117 +1,85 @@
-    html, body {
-        height: 100%;
-        margin: 0;
-        overflow: auto;
-    }
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: auto;}
 
 /* En caso de que haya poco contenido en las páginas, para mantener el footer abajo "wrapper y content"*/
-    .wrapper {
-        min-height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .content {
-        flex: 1;
-    }
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;}
 
-    footer {
-        background-color: #343a40; /* Color oscuro como en Bootstrap */
-        color: white;
-        text-align: center;
-        padding: 1rem;
-        position: relative;
-        width: 100%;
-        margin-top: auto;
-    }
+.content {
+    flex: 1;}
 
-    /*login*/
-    .container-img-principal{
-        background-image: url('../img/abstract-envelope.svg');
-        background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
-        background-position: center; /* Centra la imagen en el contenedor */
-        background-repeat: no-repeat; /* Evita que la imagen se repita */
-    }
+footer {
+    background-color: #343a40; /* Color oscuro como en Bootstrap */
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    width: 100%;
+    margin-top: auto;}
+
+/*login*/
+.container-img-principal{
+    background-image: url('../img/abstract-envelope.svg');
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
+    background-position: center; /* Centra la imagen en el contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */}
+
 /*
     .container-img{
         background-image: url('../img/abstract-envelope (1).svg');
         background-size: cover;
         background-position: center;
-        background-repeat: no-repeat;
-    }
+        background-repeat: no-repeat;}
+
 */
-    .login-container {
-        /*margin-top: 5%;*/
-        background-color: #ffffff;
-        border-radius: 30px;
-        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-        padding: 30px;
-    }
+.login-container {
+    /*margin-top: 5%;*/
+    background-color: #ffffff;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    padding: 30px;}
 
-    .logo-container img {
-        width: 100px;
-        height: auto;
-        margin-bottom: 20px;
-    }
+.logo-container img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;}
 
-    /*Index*/
-    .centered-image {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 25%; /* Ajusta el tamaño de la imagen al 25% del contenedor */
-    }
+/*Index*/
+.centered-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%; /* Ajusta el tamaño de la imagen al 25% del contenedor */}
 
-    /*IndexEmpresa / Esta clase le da a las columnas una mejor distribución con width: 150pixels*/
-    /* Asegura que la columna de acciones tenga un ancho fijo */
-    .acciones-col {
-        width: 150px;
-        text-align: right; /* Alinea el texto y contenido a la derecha */
-    }
-
-    /* Alinea los botones dentro de la celda
+/* Alinea los botones dentro de la celda
     .acciones {
         display: flex;
         justify-content: flex-end; /* Mueve los botones a la derecha
-        gap: 10px; /* Espacio entre los botones
-    }
-    */
-    /* Ajusta los botones para que mantengan su tamaño */
-    .acciones button {
-        white-space: nowrap; /* Evita que el texto de los botones se divida en varias líneas */
-    }
+        gap: 10px; /* Espacio entre los botones}
 
-/* Sección de DataTable */
-    /* Ocultar íconos de ordenamiento */
-    table.dataTable thead .sorting:before,
-    table.dataTable thead .sorting:after,
-    table.dataTable thead .sorting_asc:before,
-    table.dataTable thead .sorting_asc:after,
-    table.dataTable thead .sorting_desc:before,
-    table.dataTable thead .sorting_desc:after {
-        content: "" !important;
-    }
+*/
+/* Ajusta los botones para que mantengan su tamaño */
+.acciones button {
+    white-space: nowrap; /* Evita que el texto de los botones se divida en varias líneas */}
 
-    /* Botones de paginación más claros */
-    .dataTables_wrapper .dataTables_paginate .paginate_button {
-        padding: 0.5rem 1rem;
-        margin: 0 2px;
-        border-radius: 0.5rem;
-        border: 1px solid #ccc;
-        background-color: #f8f9fa;
-    }
-    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-        background-color: #0d6efd;
-        color: white !important;
-        border: none;
-    }
-    .dataTables_wrapper .dataTables_info {
-        margin-top: 1rem;
-        font-style: italic;
-        color: #555;
-    }
-/* Tablas de Bootstrap*/
-    table.dataTable td:last-child,
-    table.dataTable th:last-child {
-        min-width: 150px;
-        white-space: nowrap;
-    }
+/* Botones de paginación más claros */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0.5rem 1rem;
+    margin: 0 2px;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background-color: #0d6efd;
+    color: white !important;
+    border: none;}
+
+.dataTables_wrapper .dataTables_info {
+    margin-top: 1rem;
+    font-style: normal;
+    color: #555;}

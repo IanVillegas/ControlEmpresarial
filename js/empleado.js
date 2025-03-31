@@ -21,14 +21,16 @@ function guardarEmpleado(event) {
     let nacimiento = document.getElementById("nacimiento").value;
     let telefono = document.getElementById("telefono").value;
     let cargo = document.getElementById("cargo").value;
+    let rol = document.getElementById("rol").value;
     let estado = document.getElementById("estado").value;
     let empresa = document.getElementById("empresaAsociada").value;
 
-    if (!nombre || !apellido || !id || !correo || !direccion || !nacimiento || !telefono || !cargo || !estado || !empresa) {
-        alert("Todos los campos son obligatorios");
+    if (!nombre || !apellido || !id || !correo || !direccion || !nacimiento || !telefono || !cargo || !rol || !estado || !empresa) {
+        mostrarToast("Todos los campos son obligatorios", "danger");
+
         return;
     } else {
-        let empleado = { nombre, apellido, id, correo, direccion, nacimiento, telefono, cargo, estado, empresa };
+        let empleado = { nombre, apellido, id, correo, direccion, nacimiento, telefono, cargo, rol , estado, empresa};
         let empleados = JSON.parse(localStorage.getItem("empleados")) || [];
 
         let index = localStorage.getItem("editIndex");
@@ -67,6 +69,7 @@ function cargarEmpleado() {
     } else {
         empleados.forEach((empleado, index) => {
             let fila = `<tr>
+                <td>${index+1}</td>
                 <td>${empleado.nombre}</td>
                 <td>${empleado.apellido}</td>
                 <td>${empleado.id}</td>
@@ -75,14 +78,15 @@ function cargarEmpleado() {
                 <td>${empleado.nacimiento}</td>
                 <td>${empleado.telefono}</td>
                 <td>${empleado.cargo}</td>
+                <td>${empleado.rol}</td>
                 <td>${empleado.estado}</td>
                 <td>${empleado.empresa}</td>
                 <td>
                     <button onclick="editarEmpleado(${index})" class="btn btn-outline-success me-2">
-                        <i class="bi bi-pen-fill"></i>Editar
+                        <i class="bi bi-pen-fill"></i>
                     </button>
                     <button onclick="mostrarConfirmacionEliminacion(${index})" class="btn btn-outline-danger">
-                        <i class="bi bi-trash2-fill"></i>Eliminar
+                        <i class="bi bi-trash2-fill"></i>
                     </button>
                 </td>
             </tr>`;
@@ -101,7 +105,7 @@ function cargarEmpleado() {
                 {
                     extend: 'collection',
                     text: '<i class="bi bi-file-arrow-down"></i>  Descargar',
-                    className: 'btn btn-outline-secondary',
+                    className: 'btn-descargar',
                     buttons: [
                         {
                             extend: 'excelHtml5',
@@ -116,17 +120,23 @@ function cargarEmpleado() {
                     ]
                 }
             ],
+            pageLength: 3,
+            destroy: true,
             language: {
                 search: "Buscar:",
                 lengthMenu: "Mostrar _MENU_ registros",
-                info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                info: "Mostrando de _START_ a _END_ de un total de _TOTAL_ registros",
+                loadingRecords: "Cargando...",
+                zeroRecords: "No se encontraron coincidencias",
+                infoEmpty: "Mostrando 0 a 0 de 0 entradas",
+                infoFiltered: "(filtrado de _MAX_ registros totales)",
                 paginate: {
+                    first: "Primero",
+                    last: "Último",
                     previous: "Anterior",
                     next: "Siguiente"
                 },
-                zeroRecords: "No se encontraron coincidencias",
-                infoEmpty: "Mostrando 0 a 0 de 0 entradas",
-                infoFiltered: "(filtrado de _MAX_ registros totales)"
+
             }
         });
     }

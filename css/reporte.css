@@ -1,0 +1,40 @@
+/* Estilo general del dashboard */
+canvas {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* Títulos de secciones */
+h5 {
+    font-weight: bold;
+    color: #0d6efd;
+    margin-bottom: 15px;
+}
+
+/* Lista de personas dentro */
+#listaPersonasDentro {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+}
+
+#listaPersonasDentro li {
+    font-size: 0.95rem;
+    color: #212529;
+}
+
+/* Responsive padding para gráficas */
+@media (max-width: 768px) {
+    canvas {
+        margin-bottom: 30px;
+    }
+}
+.toast {
+    opacity: 0.95;
+    font-weight: 500;
+    font-size: 1rem;
+}

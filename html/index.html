@@ -13,10 +13,6 @@
         <!-- CSS -->
         <link rel="stylesheet" href="../css/style.css">
 
-        <!-- Importación JS -->
-        <script src="../js/auth.js"></script>
-        <script>verificarAutenticacion();</script>
-
     </head>
     <body>
     <div class="wrapper">
@@ -73,10 +69,47 @@
                         </ul>
                     </li>
 
+                    <!-- Dropdown para Registro de entrada y salida -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="entraSaliDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-calendar-minus-fill"></i>
+                            Entrada y Salida
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
+                            <li><a class="dropdown-item" href=frmRegistro.html>
+                                <i class="bi bi-calendar2-plus-fill"></i>
+                                Registrar Entrada y Salida</a></li>
+                            <li><a class="dropdown-item" href="indexRegistro.html">
+                                <i class="bi bi-calendar2-week-fill"></i>
+                                Lista de Registro</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Dorpdown Reportes -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="reporte" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-clipboard2-data-fill"></i>
+                            Reporte
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="reporteDropdown">
+                            <li><a class="dropdown-item" href=reporte.html>
+                                <i class="bi bi-bar-chart-fill"></i>
+                                Gráficos</a></li>
+                        </ul>
+                    </li>
                 </ul>
-                <button class="btn btn" style="color: red" onclick="logout()">
-                    <i class="bi bi-door-closed-fill"></i>
-                    LogOut</button>
+
+                <div class="ms-auto d-flex align-items-center gap-3">
+                    <div class="bg-dark rounded px-3 py-1 d-flex align-items-center shadow-sm">
+                        <i class="bi bi-person-circle me-2 text-secondary"></i>
+                        <span class="fw-semibold text-light" id="bienvenida"></span>
+                    </div>
+                    <button class="btn btn-danger" onclick="logout()">
+                        <i class="bi bi-door-closed-fill"></i> LogOut
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -93,5 +126,9 @@
         &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
     </footer>
     </div>
+    <!-- Importación JS -->
+    <script src="../js/auth.js"></script>
+    <script>verificarAutenticacion();</script>
+    <script src="../js/navbar.js"></script>
     </body>
     </html>

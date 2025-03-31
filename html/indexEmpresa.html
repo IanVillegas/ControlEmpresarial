@@ -15,11 +15,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
 
-    <!-- Importacion JS -->
-    <script src="../js/auth.js"></script>
-    <script>verificarAutenticacion();</script>
-    <script src="../js/empresa.js"></script>
-
 </head>
 <body>
 <div class="wrapper">
@@ -75,8 +70,48 @@
                             Lista de Empresas</a></li>
                     </ul>
                 </li>
+
+                <!-- Dropdown para Registro de entrada y salida -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="entraSaliDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-calendar-minus-fill"></i>
+                        Entrada y Salida
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
+                        <li><a class="dropdown-item" href=frmRegistro.html>
+                            <i class="bi bi-calendar2-plus-fill"></i>
+                            Registrar Entrada y Salida</a></li>
+                        <li><a class="dropdown-item" href="indexRegistro.html">
+                            <i class="bi bi-calendar2-week-fill"></i>
+                            Lista de Registro</a></li>
+                    </ul>
+                </li>
+
+                <!-- Dorpdown Reportes -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="reporte" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-clipboard2-data-fill"></i>
+                        Reporte
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="reporteDropdown">
+                        <li><a class="dropdown-item" href=reporte.html>
+                            <i class="bi bi-bar-chart-fill"></i>
+                            Gráficos</a></li>
+                    </ul>
+                </li>
             </ul>
-            <button class="btn btn" style="color: red" onclick="logout()">Log Out</button>
+
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <div class="bg-dark rounded px-3 py-1 d-flex align-items-center shadow-sm">
+                    <i class="bi bi-person-circle me-2 text-secondary"></i>
+                    <span class="fw-semibold text-light" id="bienvenida"></span>
+                </div>
+                <button class="btn btn-danger" onclick="logout()">
+                    <i class="bi bi-door-closed-fill"></i> LogOut
+                </button>
+            </div>
         </div>
     </div>
 </nav>
@@ -90,9 +125,10 @@
         <table class="table table-striped table-hover">
             <thead class="table-dark">
             <tr>
+                <th>#</th>
                 <th>Nombre</th>
-                <th>Ubicación</th>
                 <th>Cantidad de Personas</th>
+                <th>Mapa</th>
                 <th class="acciones-col">Acciones</th>
             </tr>
             </thead>
@@ -157,10 +193,43 @@
         </div>
     </div>
 </div>
-</div>
-<footer class="bg-dark text-white text-center py-3 mt-5">
+
+        <!-- Modal de Mapa Interactivo -->
+        <div class="modal fade" id="mapaModal" tabindex="-1" aria-labelledby="mapaModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="mapaModalLabel">Ubicación de la Empresa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="modalMap" style="height: 400px; width: 100%; border-radius: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- TOASTS -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+        <div id="toast-mensaje" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toast-texto">Mensaje de ejemplo</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
     &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
 </footer>
 </div>
+<!-- Google Maps API -->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4cUgCX8WiVbCJ4_tLGtieh08W5lVTTjU"></script>
+<!-- Importacion JS -->
+<script src="../js/auth.js"></script>
+<script>verificarAutenticacion();</script>
+<script src="../js/empresa.js"></script>
+<script src="../js/navbar.js"></script>
 </body>
 </html>

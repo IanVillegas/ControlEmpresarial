@@ -14,6 +14,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/formulario.css">
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -29,6 +30,7 @@
                 document.getElementById("nacimiento").value = empleado.nacimiento;
                 document.getElementById("telefono").value = empleado.telefono;
                 document.getElementById("cargo").value = empleado.cargo;
+                document.getElementById("rol").value = empleado.rol || "";
                 document.getElementById("estado").value = empleado.estado;
                 document.getElementById("empresaAsociada").value = empleado.empresa || "";
             }
@@ -90,8 +92,49 @@
                             Lista de Empresas</a></li>
                     </ul>
                 </li>
+
+                <!-- Dropdown para Registro de entrada y salida -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="entraSaliDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-calendar-minus-fill"></i>
+                        Entrada y Salida
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
+                        <li><a class="dropdown-item" href=frmRegistro.html>
+                            <i class="bi bi-calendar2-plus-fill"></i>
+                            Registrar Entrada y Salida</a></li>
+                        <li><a class="dropdown-item" href="indexRegistro.html">
+                            <i class="bi bi-calendar2-week-fill"></i>
+                            Lista de Registro</a></li>
+                    </ul>
+                </li>
+
+                <!-- Dorpdown Reportes -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="reporte" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-clipboard2-data-fill"></i>
+                        Reporte
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="reporteDropdown">
+                        <li><a class="dropdown-item" href=reporte.html>
+                            <i class="bi bi-bar-chart-fill"></i>
+                            Gráficos</a></li>
+                    </ul>
+                </li>
             </ul>
-            <button class="btn btn" style="color: red" onclick="logout()">Log Out</button>
+
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <div class="bg-dark rounded px-3 py-1 d-flex align-items-center shadow-sm">
+                    <i class="bi bi-person-circle me-2 text-secondary"></i>
+                    <span class="fw-semibold text-light" id="bienvenida"></span>
+                </div>
+                <button class="btn btn-danger" onclick="logout()">
+                    <i class="bi bi-door-closed-fill"></i> LogOut
+                </button>
+            </div>
+
         </div>
     </div>
 </nav>
@@ -170,6 +213,20 @@
 
             <div class="col-md-6">
                 <div class="form-floating mb-3">
+                    <select id="rol" name="rol" class="form-control w-100" required>
+                        <option value="">Seleccione un rol</option>
+                        <option value="admin">Administrador</option>
+                        <option value="registrador">Registrador</option>
+                        <option value="visor">Visor</option>
+                        <option value="sinRol">Sin Rol</option>
+                    </select>
+                    <label for="rol" style="color: grey">Rol de Usuario:</label>
+                    <div class="invalid-feedback">Espacio Obligatorio</div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-floating mb-3">
                     <input type="text" id="estado" name="estado" class="form-control w-100" placeholder="Estado"
                            required>
                     <label for="estado" style="color: grey">Estado:</label>
@@ -198,7 +255,17 @@
     </form>
 </div>
 </div>
-<footer class="bg-dark text-white text-center py-3 mt-5">
+    <!-- TOASTS -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+        <div id="toast-mensaje" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toast-texto">Mensaje de ejemplo</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
     &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
 </footer>
 </div>
@@ -206,5 +273,6 @@
 <script src="../js/auth.js"></script>
 <script>verificarAutenticacion();</script>
 <script src="../js/empleado.js"></script>
+<script src="../js/navbar.js"></script>
 </body>
 </html>

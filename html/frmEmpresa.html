@@ -15,11 +15,6 @@
             <!-- CSS -->
             <link rel="stylesheet" href="../css/style.css">
 
-            <!-- Importacion JS -->
-            <script src="../js/auth.js"></script>
-            <script>verificarAutenticacion();</script>
-            <script src="../js/empresa.js"></script>
-
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     let index = localStorage.getItem("editIndex");
@@ -27,7 +22,9 @@
                         let empresas = JSON.parse(localStorage.getItem("empresas")) || [];
                         let empresa = empresas[index];
                         document.getElementById("nombre").value = empresa.nombre;
-                        document.getElementById("ubicacion").value = empresa.ubicacion;
+                        document.getElementById("capacidadMaxima").value = empresa.capacidadMaxima;
+                        document.getElementById("latitud").value = empresa.latitud;
+                        document.getElementById("longitud").value = empresa.longitud;
                     }
                 });
             </script>
@@ -86,8 +83,48 @@
                                     Lista de Empresas</a></li>
                             </ul>
                         </li>
+
+                        <!-- Dropdown para Registro de entrada y salida -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="entraSaliDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-calendar-minus-fill"></i>
+                                Entrada y Salida
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
+                                <li><a class="dropdown-item" href=frmRegistro.html>
+                                    <i class="bi bi-calendar2-plus-fill"></i>
+                                    Registrar Entrada y Salida</a></li>
+                                <li><a class="dropdown-item" href="indexRegistro.html">
+                                    <i class="bi bi-calendar2-week-fill"></i>
+                                    Lista de Registro</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dorpdown Reportes -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="reporte" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-clipboard2-data-fill"></i>
+                                Reporte
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="reporteDropdown">
+                                <li><a class="dropdown-item" href=reporte.html>
+                                    <i class="bi bi-bar-chart-fill"></i>
+                                    Gráficos</a></li>
+                            </ul>
+                        </li>
                     </ul>
-                    <button class="btn btn" style="color: red" onclick="logout()">Log Out</button>
+
+                    <div class="ms-auto d-flex align-items-center gap-3">
+                        <div class="bg-dark rounded px-3 py-1 d-flex align-items-center shadow-sm">
+                            <i class="bi bi-person-circle me-2 text-secondary"></i>
+                            <span class="fw-semibold text-light" id="bienvenida"></span>
+                        </div>
+                        <button class="btn btn-danger" onclick="logout()">
+                            <i class="bi bi-door-closed-fill"></i> LogOut
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -104,7 +141,7 @@
                             <div class="invalid-feedback">Espacio Obligatorio</div>
                         </div>
                     </div>
-
+<!--
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
                             <input id="ubicacion" name="ubicacion" class="form-control w-100" placeholder="Ubicacion"
@@ -113,15 +150,23 @@
                             <div class="invalid-feedback">Espacio Obligatorio</div>
                         </div>
                     </div>
-
+-->
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
-                            <input type="number" id="cantPersonas" name="cantPersonas" class="form-control w-100"
-                                   placeholder="Cantidad de Personas" required/><br><br>
-                            <label for="cantPersonas" style="color: grey">Cantidad de Personas:</label>
+                            <input type="number" id="capacidadMaxima" name="capacidadMaxima" class="form-control w-100"
+                                   placeholder="Cantidad de Personas" min="1" max="10" value="10" required/><br><br>
+                            <label for="capacidadMaxima" style="color: grey">Cantidad de Personas Máxima:</label>
                             <div class="invalid-feedback">Espacio Obligatorio</div>
                         </div>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="ubicacionMapa" class="form-label">Ubicación:</label>
+                        <div id="ubicacionMapa" style="height: 300px; width: 100%; border-radius: 10px;"></div>
+                    </div>
+
+                    <input type="hidden" id="latitud" name="latitud">
+                    <input type="hidden" id="longitud" name="longitud">
 
                     <div class="col-md-12 text-center mt-6">
                         <!--
@@ -137,10 +182,80 @@
                 </div>
             </form>
         </div>
-        </div>
-        <footer class="bg-dark text-white text-center py-3 mt-5">
+                <script>
+                    let selectedLat = null;
+                    let selectedLng = null;
+                    let marker;
+
+                    function initMap() {
+                        // Obtener posibles coordenadas cargadas (modo edición)
+                        const latInput = document.getElementById("latitud").value;
+                        const lngInput = document.getElementById("longitud").value;
+
+                        const hasCoords = latInput && lngInput;
+                        const initialPosition = hasCoords
+                            ? { lat: parseFloat(latInput), lng: parseFloat(lngInput) }
+                            : { lat: 9.7489, lng: -83.7534 }; // Centro de Costa Rica por defecto
+
+                        const map = new google.maps.Map(document.getElementById("ubicacionMapa"), {
+                            zoom: 8,
+                            center: initialPosition,
+                        });
+
+                        // Si ya hay coordenadas guardadas, mostrar el marcador
+                        if (hasCoords) {
+                            marker = new google.maps.Marker({
+                                position: initialPosition,
+                                map: map,
+                            });
+
+                            selectedLat = initialPosition.lat;
+                            selectedLng = initialPosition.lng;
+                        }
+
+                        // Escuchar clics en el mapa
+                        map.addListener("click", function (event) {
+                            selectedLat = event.latLng.lat();
+                            selectedLng = event.latLng.lng();
+
+                            // Colocar o mover marcador
+                            if (marker) {
+                                marker.setPosition(event.latLng);
+                            } else {
+                                marker = new google.maps.Marker({
+                                    position: event.latLng,
+                                    map: map,
+                                });
+                            }
+
+                            // Actualizar los campos ocultos
+                            document.getElementById("latitud").value = selectedLat;
+                            document.getElementById("longitud").value = selectedLng;
+                        });
+                    }
+                </script>
+            </div>
+            <!-- TOASTS -->
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+                <div id="toast-mensaje" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body" id="toast-texto">Mensaje de ejemplo</div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="bg-dark text-white text-center py-3 mt-5">
             &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
         </footer>
         </div>
+        <!-- Importacion JS -->
+        <script src="../js/auth.js"></script>
+        <script>verificarAutenticacion();</script>
+        <script src="../js/empresa.js"></script>
+        <script src="../js/navbar.js"></script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4cUgCX8WiVbCJ4_tLGtieh08W5lVTTjU&callback=initMap">
+        </script>
         </body>
         </html>

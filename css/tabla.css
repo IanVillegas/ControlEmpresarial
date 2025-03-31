@@ -1,0 +1,21 @@
+/*IndexEmpresa / Esta clase le da a las columnas una mejor distribución con width: 150pixels*/
+/* Asegura que la columna de acciones tenga un ancho fijo */
+.acciones-col {
+    width: 150px;
+    text-align: right; /* Alinea el texto y contenido a la derecha */}
+
+/* Sección de DataTable */
+/* Ocultar íconos de ordenamiento */
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc:after {
+    content: "" !important;}
+
+/* Tablas de Bootstrap*/
+table.dataTable td:last-child,
+table.dataTable th:last-child {
+    min-width: 150px;
+    white-space: nowrap;}
