@@ -25,6 +25,7 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/navbar.css">
         <link rel="stylesheet" href="../css/tabla.css">
 
     </head>
@@ -32,7 +33,7 @@
     <div class="wrapper">
         <div class="content">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-white bg-white shadow-sm">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <img src="../img/icoSIUA.png" alt="Logo" style="height: 50px; margin-right: 10px;">
@@ -116,11 +117,12 @@
                 </ul>
 
                 <div class="ms-auto d-flex align-items-center gap-3">
-                    <div class="bg-dark rounded px-3 py-1 d-flex align-items-center shadow-sm">
+                    <div class="bg-white rounded px-3 py-1 d-flex align-items-center border border-secondary">
                         <i class="bi bi-person-circle me-2 text-secondary"></i>
-                        <span class="fw-semibold text-light" id="bienvenida"></span>
+                        <span class="fw-semibold text-dark" id="bienvenida"></span>
                     </div>
-                    <button class="btn btn-danger" onclick="logout()">
+                    <button class="btn btn-white btn-outline-danger rounded px-3 py-1"
+                            onclick="logout()">
                         <i class="bi bi-door-closed-fill"></i> LogOut
                     </button>
                 </div>
@@ -130,15 +132,24 @@
 
     <div class="container mt-4 mb-5">
         <h1 class="text-center mb-4">Empleados Registrados</h1>
-        <div class="text-center mb-3">
-            <a href="frmEmpleado.html"></a>
-        </div>
         <!-- Botón de exportación -->
+        <div class="dropdown mb-3">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="exportDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-download me-1"></i> Exportar
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                <li><a class="dropdown-item" href="#" onclick="exportarPDF()">
+                    <i class="bi bi-file-earmark-pdf-fill text-danger me-1"></i> Exportar a PDF</a></li>
+                <li><a class="dropdown-item" href="#" onclick="exportarExcel()">
+                    <i class="bi bi-file-earmark-excel-fill text-success me-1"></i> Exportar a Excel</a></li>
+            </ul>
+        </div>
 
         <!-- Tabla de empleados -->
-        <div class="table-responsive" style="overflow-x: auto;">
-            <table class="table table-striped table-hover nowrap" style="width: 100%;">
-                <thead class="table-dark">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover nowrap">
+                <thead>
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
@@ -225,8 +236,8 @@
             </div>
         </div>
 
-        <footer class="bg-dark text-white text-center py-3 mt-5">
-        &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
+        <footer class="bg-white text-black text-center py-3 mt-5 shadow-top">
+            &copy; 2025 Programación IV - Ian Villegas
     </footer>
     </div>
     <!-- Importacion JS -->

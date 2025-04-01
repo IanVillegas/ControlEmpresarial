@@ -1,0 +1,13 @@
+/* Dropdown */
+.navbar .nav-link:hover {
+    color: #045ca9;
+    transition: all 0.2s ease-in-out;
+}
+/* Inicio */
+.navbar .nav-item:has(.nav-link[href="index.html"]):hover .nav-link {
+    color: #d1242a;
+}
+
+.navbar .nav-link.active {
+    color: #045ca9;
+}

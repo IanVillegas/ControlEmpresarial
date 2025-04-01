@@ -15,12 +15,14 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+
 </head>
 <body>
 <div class="wrapper">
     <div class="content">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-white bg-white shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html">
                     <img src="../img/icoSIUA.png" alt="Logo" style="height: 50px; margin-right: 10px;">
@@ -103,11 +105,12 @@
                         </li>
                     </ul>
                     <div class="ms-auto d-flex align-items-center gap-3">
-                        <div class="bg-dark rounded px-3 py-1 d-flex align-items-center shadow-sm">
+                        <div class="bg-white rounded px-3 py-1 d-flex align-items-center border border-secondary">
                             <i class="bi bi-person-circle me-2 text-secondary"></i>
-                            <span class="fw-semibold text-light" id="bienvenida"></span>
+                            <span class="fw-semibold text-dark" id="bienvenida"></span>
                         </div>
-                        <button class="btn btn-danger" onclick="logout()">
+                        <button class="btn btn-white btn-outline-danger rounded px-3 py-1"
+                                onclick="logout()">
                             <i class="bi bi-door-closed-fill"></i> LogOut
                         </button>
                     </div>
@@ -120,6 +123,7 @@
             <h1 class="text-center mb-4">Registrar ingreso o salida</h1>
             <form onsubmit="guardarRegistro(event)" class="needs-validation" novalidate>
                 <div class="row mb-3">
+
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
                         <select id="persona" class="form-select" required onchange="mostrarOficinaAsociada()">
@@ -128,6 +132,7 @@
                             <label for="persona" class="form-label" style="color: grey">Persona</label>
                         </div>
                     </div>
+
                     <div class="col-md-6">
                         <div class="form-floating mb-3">
                             <input type="text" id="oficina" class="form-control" readonly placeholder="Oficina" required>
@@ -178,13 +183,14 @@
             </div>
         </div>
     </div>
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
+    <footer class="bg-white text-black text-center py-3 mt-5 shadow-top">
+        &copy; 2025 Programación IV - Ian Villegas
     </footer>
 </div>
 <!-- Importación JS -->
 <script src="../js/auth.js"></script>
 <script>verificarAutenticacion();</script>
 <script src="../js/navbar.js"></script>
+<script src="../js/registro.js"></script>
 </body>
 </html>

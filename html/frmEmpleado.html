@@ -15,6 +15,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/formulario.css">
+    <link rel="stylesheet" href="../css/navbar.css">
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -42,7 +43,7 @@
 <div class="wrapper">
     <div class="content">
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-white bg-white shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.html">
             <img src="../img/icoSIUA.png" alt="Logo" style="height: 50px; margin-right: 10px;">
@@ -126,11 +127,12 @@
             </ul>
 
             <div class="ms-auto d-flex align-items-center gap-3">
-                <div class="bg-dark rounded px-3 py-1 d-flex align-items-center shadow-sm">
+                <div class="bg-white rounded px-3 py-1 d-flex align-items-center border border-secondary">
                     <i class="bi bi-person-circle me-2 text-secondary"></i>
-                    <span class="fw-semibold text-light" id="bienvenida"></span>
+                    <span class="fw-semibold text-dark" id="bienvenida"></span>
                 </div>
-                <button class="btn btn-danger" onclick="logout()">
+                <button class="btn btn-white btn-outline-danger rounded px-3 py-1"
+                        onclick="logout()">
                     <i class="bi bi-door-closed-fill"></i> LogOut
                 </button>
             </div>
@@ -244,12 +246,14 @@
             </div>
 
             <div class="col-md-12 text-center mt-6">
-                <button type="submit" class="btn btn-outline-success me-2">Guardar</button>
+                <button type="submit" class="btn btn-outline-success me-2">Guardar
+                    <i class="bi bi-check"></i>
+                </button>
                 <button type="button" class="btn btn-outline-danger"
                         onclick="window.location.href = 'indexEmpleado.html'">Cancelar
+                    <i class="bi bi-x"></i>
                 </button>
             </div>
-
         </div>
     </form>
 </div>
@@ -264,8 +268,8 @@
         </div>
     </div>
 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-    &copy; 2025 Programación IV - Derechos Reservados - Ian Villegas
+    <footer class="bg-white text-black text-center py-3 mt-5 shadow-top">
+        &copy; 2025 Programación IV - Ian Villegas
 </footer>
 </div>
 <!-- Importacion JS -->

@@ -34,8 +34,14 @@ function establecerFechaHoraActual() {
     const fechaHoraInput = document.getElementById("fechaHora");
     if (fechaHoraInput) {
         const ahora = new Date();
-        const iso = ahora.toISOString().slice(0, 16);
-        fechaHoraInput.value = iso;
+        const year = ahora.getFullYear();
+        const month = String(ahora.getMonth() + 1).padStart(2, '0');
+        const day = String(ahora.getDate()).padStart(2, '0');
+        const hours = String(ahora.getHours()).padStart(2, '0');
+        const minutes = String(ahora.getMinutes()).padStart(2, '0');
+
+        const fechaHoraLocal = `${year}-${month}-${day}T${hours}:${minutes}`;
+        fechaHoraInput.value = fechaHoraLocal;
     }
 }
 

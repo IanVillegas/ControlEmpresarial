@@ -83,10 +83,10 @@ function cargarEmpleado() {
                 <td>${empleado.empresa}</td>
                 <td>
                     <button onclick="editarEmpleado(${index})" class="btn btn-outline-success me-2">
-                        <i class="bi bi-pen-fill"></i>
+                       <!--Editar--><i class="bi bi-pen-fill"></i>
                     </button>
                     <button onclick="mostrarConfirmacionEliminacion(${index})" class="btn btn-outline-danger">
-                        <i class="bi bi-trash2-fill"></i>
+                       <!--Eliminar--><i class="bi bi-trash2-fill"></i>
                     </button>
                 </td>
             </tr>`;
@@ -101,7 +101,7 @@ function cargarEmpleado() {
 
         tabla.DataTable({
             dom: 'Bfrtip',
-            buttons: [
+            /*buttons: [
                 {
                     extend: 'collection',
                     text: '<i class="bi bi-file-arrow-down"></i>  Descargar',
@@ -118,6 +118,16 @@ function cargarEmpleado() {
                             className: 'dropdown-item'
                         }
                     ]
+                }
+            ],*/
+            buttons: [
+                {
+                    extend: 'pdfHtml5',
+                    className: 'd-none buttons-pdf' // oculto pero accesible desde JS
+                },
+                {
+                    extend: 'excelHtml5',
+                    className: 'd-none buttons-excel' // oculto pero accesible desde JS
                 }
             ],
             pageLength: 3,
@@ -140,6 +150,15 @@ function cargarEmpleado() {
             }
         });
     }
+}
+
+// --- Funciones de exportación personalizada ---
+function exportarPDF() {
+    $('.table').DataTable().button('.buttons-pdf').trigger();
+}
+
+function exportarExcel() {
+    $('.table').DataTable().button('.buttons-excel').trigger();
 }
 
 
