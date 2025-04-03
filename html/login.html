@@ -1,86 +1,89 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>LogIn</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LogIn</title>
 
-        <!-- Bootstrap CSS -->
-        <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
-        <script crossorigin="anonymous"
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-                src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-        <!-- Importación JS -->
-        <script src="../js/auth.js"></script>
+    <!-- Importación JS -->
+    <script src="../js/auth.js"></script>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/navbar.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
 
-    </head>
-    <body class="container-img-principal">
-    <div class="container d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-4 login-container text-center">
+</head>
+<body class="container-img-principal">
+<div class="container d-flex justify-content-center align-items-center h-100">
+    <div class="col-md-4 login-container text-center">
 
-            <div class="logo-container">
-                <img alt="Logo Empresa"
-                     id="logo-empresa" src="../img/icoSIUA.png">
-            </div>
-            <h2 class="text-center mb-4">LogIn</h2>
-            <form class="needs-validation" novalidate onsubmit="login(event)">
-                <div class="row mb-3">
-                    <div class="col-12">
+        <div class="logo-container">
+            <img alt="Logo Empresa"
+                 id="logo-empresa" src="../img/icoSIUA.png">
+        </div>
+        <h2 class="text-center mb-4">LogIn</h2>
+        <form class="needs-validation" novalidate onsubmit="login(event)">
+            <div class="row mb-3">
+                <div class="col-12">
                     <div class="form-floating mb-3">
-                        <input type="text" id="username" name="username" class="form-control" placeholder="Usuario" required/><br><br>
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Usuario"
+                               required/><br><br>
                         <label for="username" style="color: grey">Usuario:</label>
                         <div class="invalid-feedback">Espacio Obligatorio</div>
                     </div>
-                    </div>
-                    <div class="col-12">
+                </div>
+                <div class="col-12">
                     <div class="form-floating mb-3">
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required/><br><br>
+                        <input type="password" id="password" name="password" class="form-control"
+                               placeholder="Contraseña" required/><br><br>
                         <label for="password" style="color: grey">Contraseña:</label>
                         <div class="invalid-feedback">Espacio Obligatorio</div>
                     </div>
-                    </div>
-                    <!--
-                    <div class="col-md-12 text-center mt-6">
-                        <button type="submit" class="btn btn-outline-info me-2">Login</button>
-                    </div>
-                    -->
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-outline-info me-2">
-                            <i class="bi bi-door-open-fill"></i>
-                            Login</button>
-                    </div>
                 </div>
-            </form>
-        </div>
+                <!--
+                <div class="col-md-12 text-center mt-6">
+                    <button type="submit" class="btn btn-outline-info me-2">Login</button>
+                </div>
+                -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-outline-info me-2">
+                        <i class="bi bi-door-open-fill"></i>
+                        Login
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
-    <!-- Modal - En lugar del popup-->
-    <!-- Modal de Alerta (Reutilizable) -->
-    <div class="modal fade" id="alertaModal" tabindex="-1" aria-labelledby="alertaModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title" id="alertaModalLabel">¡Atención!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="alertaMensaje">
-                    <!-- Aquí se insertará el mensaje dinámico -->
-                </div>
-                <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar</button>
-                </div>
+</div>
+<!-- Modal - En lugar del popup-->
+<!-- Modal de Alerta (Reutilizable) -->
+<div class="modal fade" id="alertaModal" tabindex="-1" aria-labelledby="alertaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="alertaModalLabel">¡Atención!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="alertaMensaje">
+                <!-- Aquí se insertará el mensaje dinámico -->
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
+</div>
 
-    <footer class="bg-white text-black text-center py-3 mt-5 shadow-top">
-        &copy; 2025 Programación IV - Ian Villegas
-    </footer>
-    </body>
-    </html>
+<footer class="bg-white text-black text-center py-3 mt-5 shadow-top">
+    &copy; 2025 Programación IV - Ian Villegas
+</footer>
+</body>
+</html>

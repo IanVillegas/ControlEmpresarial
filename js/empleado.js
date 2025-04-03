@@ -8,11 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
 function guardarEmpleado(event) {
     event.preventDefault(); // Evitar la recarga del formulario
     let form = event.target;
-    if(!form.checkValidity()){
+    if (!form.checkValidity()) {
         event.stopPropagation();
         form.classList.add('was-validated');
         return;
     }
+
     let nombre = document.getElementById("nombre").value;
     let apellido = document.getElementById("apellido").value;
     let id = document.getElementById("id").value;
@@ -27,22 +28,39 @@ function guardarEmpleado(event) {
 
     if (!nombre || !apellido || !id || !correo || !direccion || !nacimiento || !telefono || !cargo || !rol || !estado || !empresa) {
         mostrarToast("Todos los campos son obligatorios", "danger");
-
         return;
-    } else {
-        let empleado = { nombre, apellido, id, correo, direccion, nacimiento, telefono, cargo, rol , estado, empresa};
-        let empleados = JSON.parse(localStorage.getItem("empleados")) || [];
-
-        let index = localStorage.getItem("editIndex");
-        if (index !== null) {
-            empleados[index] = empleado;
-        } else {
-            empleados.push(empleado);
-        }
-        localStorage.setItem("empleados", JSON.stringify(empleados));
-        window.location.href = "indexEmpleado.html";
     }
+
+    let empleados = JSON.parse(localStorage.getItem("empleados")) || [];
+    let index = localStorage.getItem("editIndex");
+
+    // Validar ID duplicado (excepto si es edición del mismo empleado)
+    let idDuplicado = empleados.some((empl, i) =>
+        empl.id.trim() === id.trim() && i != index
+    );
+
+    if (idDuplicado) {
+        mostrarToast("Ya existe un empleado con ese ID. Por favor elige otro.", "danger");
+        return;
+    }
+
+    // Crear objeto empleado
+    let empleado = {
+        nombre, apellido, id, correo, direccion,
+        nacimiento, telefono, cargo, rol, estado, empresa
+    };
+
+    if (index !== null && index !== "null") { //para asegurarse de que esté bien evaluado
+        empleados[index] = empleado;
+    } else {
+        empleados.push(empleado);
+    }
+
+    localStorage.setItem("empleados", JSON.stringify(empleados));
+    window.location.href = "indexEmpleado.html";
 }
+
+
 /* Para cargar empresas automáticamente en el select de frm */
 function cargarEmpresasEnSelect() {
     let empresas = JSON.parse(localStorage.getItem("empresas")) || [];
@@ -55,8 +73,18 @@ function cargarEmpresasEnSelect() {
         select.appendChild(option);
     });
 }
+
 cargarEmpresasEnSelect();
 
+function formatearRol(rol) {
+    const roles = {
+        admin: "Admin",
+        registrador: "Registrador",
+        visor: "Visor",
+        sinRol: "Sin Rol"
+    };
+    return roles[rol] || rol;
+}
 
 function cargarEmpleado() {
     let empleados = JSON.parse(localStorage.getItem("empleados")) || [];
@@ -69,7 +97,7 @@ function cargarEmpleado() {
     } else {
         empleados.forEach((empleado, index) => {
             let fila = `<tr>
-                <td>${index+1}</td>
+                <td>${index + 1}</td>
                 <td>${empleado.nombre}</td>
                 <td>${empleado.apellido}</td>
                 <td>${empleado.id}</td>
@@ -78,8 +106,12 @@ function cargarEmpleado() {
                 <td>${empleado.nacimiento}</td>
                 <td>${empleado.telefono}</td>
                 <td>${empleado.cargo}</td>
-                <td>${empleado.rol}</td>
-                <td>${empleado.estado}</td>
+                <td>${formatearRol(empleado.rol)}</td>
+                <td class="text-center">
+                    ${empleado.estado === "activo"
+                    ? '<i class="bi bi-check-circle-fill text-success fs-5"></i>'
+                    : '<i class="bi bi-x-circle-fill text-danger fs-5"></i>'}
+                </td>
                 <td>${empleado.empresa}</td>
                 <td>
                     <button onclick="editarEmpleado(${index})" class="btn btn-outline-success me-2">
@@ -191,6 +223,7 @@ function eliminarEmpleado(index) {
         console.error("Índice no válido:", index);
     }
 }
+
 function editarEmpleado(index) {
     localStorage.setItem("editIndex", index);
     window.location.href = "frmEmpleado.html";

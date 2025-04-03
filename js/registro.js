@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function () {
     cargarRegistros();
 });
 
+// Variable global para eliminación de registro
+let registroAEliminarIndex = null;
+
 function cargarPersonas() {
     const personas = JSON.parse(localStorage.getItem("empleados")) || [];
     const select = document.getElementById("persona");
@@ -105,6 +108,15 @@ function guardarRegistro(event) {
     window.location.href = "indexRegistro.html";
 }
 
+function exportarPDF() {
+    $('#tablaRegistros').DataTable().button('.buttons-pdf').trigger();
+}
+
+function exportarExcel() {
+    $('#tablaRegistros').DataTable().button('.buttons-excel').trigger();
+}
+
+
 function cargarRegistros() {
     const registros = JSON.parse(localStorage.getItem("registros")) || [];
     const tbody = document.getElementById("registros-list");
@@ -119,6 +131,12 @@ function cargarRegistros() {
       <td>${registro.oficina}</td>
       <td>${registro.tipo}</td>
       <td>${registro.fechaHora.replace("T", " ")}</td>
+   <td>
+  <button onclick="mostrarConfirmacionEliminacionRegistro(${index})" class="btn btn-outline-danger btn-sm">
+    <i class="bi bi-trash-fill"></i>
+  </button>
+</td>
+
     </tr>`;
         tbody.innerHTML += fila;
     });
@@ -129,12 +147,21 @@ function cargarRegistros() {
 
     $('#tablaRegistros').DataTable({
         dom: 'Bfrtip',
-        buttons: ['excelHtml5', 'pdfHtml5'],
-        pageLength: 5,
+        buttons: [
+            {
+                extend: 'pdfHtml5',
+                className: 'd-none buttons-pdf'
+            },
+            {
+                extend: 'excelHtml5',
+                className: 'd-none buttons-excel'
+            }
+        ],
+        pageLength: 3,
         language: {
             search: "Buscar:",
             lengthMenu: "Mostrar _MENU_ registros",
-            info: "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+            info: "Mostrando de _START_ a _END_ de un total de _TOTAL_ registros",
             loadingRecords: "Cargando...",
             zeroRecords: "No se encontraron coincidencias",
             infoEmpty: "Mostrando 0 a 0 de 0 entradas",
@@ -147,4 +174,41 @@ function cargarRegistros() {
             }
         }
     });
+
+}
+
+function mostrarConfirmacionEliminacionRegistro(index) {
+    registroAEliminarIndex = index;
+    const modal = new bootstrap.Modal(document.getElementById("modalEliminarRegistro"));
+    modal.show();
+}
+
+function confirmarEliminacionRegistro() {
+    if (registroAEliminarIndex === null) return;
+
+    let registros = JSON.parse(localStorage.getItem("registros")) || [];
+    const registroActual = registros[registroAEliminarIndex];
+
+    if (registroActual.tipo === "Ingreso") {
+        // Buscar y eliminar la salida posterior
+        const salidaIndex = registros.findIndex(r =>
+            r.persona === registroActual.persona &&
+            r.oficina === registroActual.oficina &&
+            r.tipo === "Salida" &&
+            new Date(r.fechaHora) > new Date(registroActual.fechaHora)
+        );
+        if (salidaIndex !== -1) {
+            registros.splice(salidaIndex, 1);
+        }
+    }
+
+    registros.splice(registroAEliminarIndex, 1);
+    localStorage.setItem("registros", JSON.stringify(registros));
+    cargarRegistros();
+    mostrarToast("Registro eliminado correctamente", "success");
+
+    // Cerrar modal y resetear índice
+    const modal = bootstrap.Modal.getInstance(document.getElementById("modalEliminarRegistro"));
+    if (modal) modal.hide();
+    registroAEliminarIndex = null;
 }

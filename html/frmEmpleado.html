@@ -42,235 +42,247 @@
 <body>
 <div class="wrapper">
     <div class="content">
-<!-- Navbar -->
+        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-white bg-white shadow-sm">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-            <img src="../img/icoSIUA.png" alt="Logo" style="height: 50px; margin-right: 10px;">
-            <!--SIUA-->
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                        <i class="bi bi-house-door-fill"></i>
-                        Inicio</a>
-                </li>
-                <!-- Dropdown para EMPLEADO -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" href="#" id="empleadoDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-badge-fill"></i>
-                        Empleado
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="empleadoDropdown">
-                        <li><a class="dropdown-item" href="frmEmpleado.html">
-                            <i class="bi bi-person-fill-add"></i>
-                            Registrar Empleado</a></li>
-                        <li><a class="dropdown-item" href="indexEmpleado.html">
-                            <i class="bi bi-person-lines-fill"></i>
-                            Lista de Empleados</a></li>
-                    </ul>
-                </li>
-
-                <!-- Dropdown para EMPRESA -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="empresaDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-building-fill"></i>
-                        Empresa
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
-                        <li><a class="dropdown-item" href="frmEmpresa.html">
-                            <i class="bi bi-building-fill-add"></i>
-                            Registrar Empresa</a></li>
-                        <li><a class="dropdown-item" href="indexEmpresa.html">
-                            <i class="bi bi-list-ul"></i>
-                            Lista de Empresas</a></li>
-                    </ul>
-                </li>
-
-                <!-- Dropdown para Registro de entrada y salida -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="entraSaliDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-calendar-minus-fill"></i>
-                        Entrada y Salida
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
-                        <li><a class="dropdown-item" href=frmRegistro.html>
-                            <i class="bi bi-calendar2-plus-fill"></i>
-                            Registrar Entrada y Salida</a></li>
-                        <li><a class="dropdown-item" href="indexRegistro.html">
-                            <i class="bi bi-calendar2-week-fill"></i>
-                            Lista de Registro</a></li>
-                    </ul>
-                </li>
-
-                <!-- Dorpdown Reportes -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="reporte" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-clipboard2-data-fill"></i>
-                        Reporte
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="reporteDropdown">
-                        <li><a class="dropdown-item" href=reporte.html>
-                            <i class="bi bi-bar-chart-fill"></i>
-                            Gráficos</a></li>
-                    </ul>
-                </li>
-            </ul>
-
-            <div class="ms-auto d-flex align-items-center gap-3">
-                <div class="bg-white rounded px-3 py-1 d-flex align-items-center border border-secondary">
-                    <i class="bi bi-person-circle me-2 text-secondary"></i>
-                    <span class="fw-semibold text-dark" id="bienvenida"></span>
-                </div>
-                <button class="btn btn-white btn-outline-danger rounded px-3 py-1"
-                        onclick="logout()">
-                    <i class="bi bi-door-closed-fill"></i> LogOut
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="../img/icoSIUA.png" alt="Logo" style="height: 50px; margin-right: 10px;">
+                    <!--SIUA-->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="bi bi-house-door-fill"></i>
+                                Inicio</a>
+                        </li>
+                        <!-- Dropdown para EMPLEADO -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="empleadoDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-badge-fill"></i>
+                                Empleado
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="empleadoDropdown">
+                                <li><a class="dropdown-item" href="frmEmpleado.html">
+                                    <i class="bi bi-person-fill-add"></i>
+                                    Registrar Empleado</a></li>
+                                <li><a class="dropdown-item" href="indexEmpleado.html">
+                                    <i class="bi bi-person-lines-fill"></i>
+                                    Lista de Empleados</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dropdown para EMPRESA -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="empresaDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-building-fill"></i>
+                                Empresa
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
+                                <li><a class="dropdown-item" href="frmEmpresa.html">
+                                    <i class="bi bi-building-fill-add"></i>
+                                    Registrar Empresa</a></li>
+                                <li><a class="dropdown-item" href="indexEmpresa.html">
+                                    <i class="bi bi-list-ul"></i>
+                                    Lista de Empresas</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dropdown para Registro de entrada y salida -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="entraSaliDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-calendar-minus-fill"></i>
+                                Entrada y Salida
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
+                                <li><a class="dropdown-item" href=frmRegistro.html>
+                                    <i class="bi bi-calendar2-plus-fill"></i>
+                                    Registrar Entrada y Salida</a></li>
+                                <li><a class="dropdown-item" href="indexRegistro.html">
+                                    <i class="bi bi-calendar2-week-fill"></i>
+                                    Lista de Registro</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Dorpdown Reportes -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="reporte" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-clipboard2-data-fill"></i>
+                                Reporte
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="reporteDropdown">
+                                <li><a class="dropdown-item" href=reporte.html>
+                                    <i class="bi bi-bar-chart-fill"></i>
+                                    Gráficos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="ms-auto d-flex align-items-center gap-3">
+                        <div class="bg-white rounded px-3 py-1 d-flex align-items-center border border-secondary">
+                            <i class="bi bi-person-circle me-2 text-secondary"></i>
+                            <span class="fw-semibold text-dark" id="bienvenida"></span>
+                        </div>
+                        <button class="btn btn-white btn-outline-danger rounded px-3 py-1"
+                                onclick="logout()">
+                            <i class="bi bi-door-closed-fill"></i> LogOut
+                        </button>
+                    </div>
+                </div>
             </div>
+        </nav>
+
+        <div class="container mt-4">
+            <h1 class="text-center mb-4">Crear Empleados</h1>
+            <form class="needs-validation" novalidate onsubmit="guardarEmpleado(event)">
+                <div class="row mb-3">
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" id="nombre" name="nombre" class="form-control w-100" placeholder="Nombre"
+                                   required>
+                            <label for="nombre" style="color: grey">Nombre:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" id="apellido" name="apellido" class="form-control w-100"
+                                   placeholder="Apellido" required>
+                            <label for="apellido" style="color: grey">Apellido:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="number" id="id" name="id" class="form-control w-100"
+                                   placeholder="Identificación" required>
+                            <label for="id" style="color: grey">Identificación:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="email" id="correo" name="correo" class="form-control w-100"
+                                   placeholder="Correo" required>
+                            <label for="correo" style="color: grey">Correo:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" id="direccion" name="direccion" class="form-control w-100"
+                                   placeholder="Dirección" required>
+                            <label for="direccion" style="color: grey">Dirección:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="date" id="nacimiento" name="nacimiento" class="form-control w-100"
+                                   placeholder="Fecha de Nacimiento"
+                                   required>
+                            <label for="nacimiento" style="color: grey">Fecha de Nacimiento:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" id="telefono" name="telefono" class="form-control w-100"
+                                   placeholder="Teléfono"
+                                   required>
+                            <label for="telefono" style="color: grey">Teléfono:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" id="cargo" name="cargo" class="form-control w-100" placeholder="Cargo"
+                                   required>
+                            <label for="cargo" style="color: grey">Cargo:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <select id="rol" name="rol" class="form-control w-100" required>
+                                <option value="">Seleccione un rol</option>
+                                <option value="admin">Administrador</option>
+                                <option value="registrador">Registrador</option>
+                                <option value="visor">Visor</option>
+                                <option value="sinRol">Sin Rol</option>
+                            </select>
+                            <label for="rol" style="color: grey">Rol de Usuario:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <select id="estado" name="estado" class="form-select" required>
+                                <option value="" disabled selected>Seleccione estado</option>
+                                <option value="activo">Activo</option>
+                                <option value="inactivo">Inactivo</option>
+                            </select>
+                            <label for="estado" style="color: grey">Estado:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <Select id="empresaAsociada" name="empresaAsociada" class="form-control w-100" required>
+                                <option value="">Seleccione una empresa</option>
+                            </select>
+                            <label for="empresaAsociada" style="color: grey">Empresa Asociada:</label>
+                            <div class="invalid-feedback">Espacio Obligatorio</div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 text-center mt-6">
+                        <button type="submit" class="btn btn-outline-success me-2">Guardar
+                            <i class="bi bi-check"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger"
+                                onclick="window.location.href = 'indexEmpleado.html'">Cancelar
+                            <i class="bi bi-x"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-</nav>
-
-<div class="container mt-4">
-    <h1 class="text-center mb-4">Crear Empleados</h1>
-    <form class="needs-validation" novalidate onsubmit="guardarEmpleado(event)">
-        <div class="row mb-3">
-
-            <div class="col-md-6">
-                <div class="form-floating mb-3">
-                    <input type="text" id="nombre" name="nombre" class="form-control w-100" placeholder="Nombre" required>
-                    <label for="nombre" style="color: grey">Nombre:</label>
-                    <div class="invalid-feedback">Espacio Obligatorio</div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-floating mb-3">
-                    <input type="text" id="apellido" name="apellido" class="form-control w-100" placeholder="Apellido" required>
-                    <label for="apellido" style="color: grey">Apellido:</label>
-                    <div class="invalid-feedback">Espacio Obligatorio</div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-floating mb-3">
-                    <input type="number" id="id" name="id" class="form-control w-100" placeholder="Identificación" required>
-                    <label for="id" style="color: grey">Identificación:</label>
-                    <div class="invalid-feedback">Espacio Obligatorio</div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-floating mb-3">
-                    <input type="email" id="correo" name="correo" class="form-control w-100" placeholder="Correo" required>
-                    <label for="correo" style="color: grey">Correo:</label>
-                    <div class="invalid-feedback">Espacio Obligatorio</div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-floating mb-3">
-                    <input type="text" id="direccion" name="direccion" class="form-control w-100" placeholder="Dirección" required>
-                    <label for="direccion" style="color: grey">Dirección:</label>
-                    <div class="invalid-feedback">Espacio Obligatorio</div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-floating mb-3">
-                    <input type="date" id="nacimiento" name="nacimiento" class="form-control w-100" placeholder="Fecha de Nacimiento"
-                           required>
-                    <label for="nacimiento" style="color: grey">Fecha de Nacimiento:</label>
-                    <div class="invalid-feedback">Espacio Obligatorio</div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-floating mb-3">
-                    <input type="text" id="telefono" name="telefono" class="form-control w-100" placeholder="Teléfono"
-                           required>
-                    <label for="telefono" style="color: grey">Teléfono:</label>
-                    <div class="invalid-feedback">Espacio Obligatorio</div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-floating mb-3">
-                    <input type="text" id="cargo" name="cargo" class="form-control w-100" placeholder="Cargo"
-                           required>
-                    <label for="cargo" style="color: grey">Cargo:</label>
-                    <div class="invalid-feedback">Espacio Obligatorio</div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-floating mb-3">
-                    <select id="rol" name="rol" class="form-control w-100" required>
-                        <option value="">Seleccione un rol</option>
-                        <option value="admin">Administrador</option>
-                        <option value="registrador">Registrador</option>
-                        <option value="visor">Visor</option>
-                        <option value="sinRol">Sin Rol</option>
-                    </select>
-                    <label for="rol" style="color: grey">Rol de Usuario:</label>
-                    <div class="invalid-feedback">Espacio Obligatorio</div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-floating mb-3">
-                    <input type="text" id="estado" name="estado" class="form-control w-100" placeholder="Estado"
-                           required>
-                    <label for="estado" style="color: grey">Estado:</label>
-                    <div class="invalid-feedback">Espacio Obligatorio</div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="form-floating mb-3">
-                    <Select id="empresaAsociada" name="empresaAsociada" class="form-control w-100" required>
-                    <option value="">Seleccione una empresa</option>
-                    </select>
-                    <label for="empresaAsociada" style="color: grey">Empresa Asociada:</label>
-                    <div class="invalid-feedback">Espacio Obligatorio</div>
-                </div>
-            </div>
-
-            <div class="col-md-12 text-center mt-6">
-                <button type="submit" class="btn btn-outline-success me-2">Guardar
-                    <i class="bi bi-check"></i>
-                </button>
-                <button type="button" class="btn btn-outline-danger"
-                        onclick="window.location.href = 'indexEmpleado.html'">Cancelar
-                    <i class="bi bi-x"></i>
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
-</div>
     <!-- TOASTS -->
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
-        <div id="toast-mensaje" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="toast-mensaje" class="toast align-items-center text-white bg-success border-0" role="alert"
+             aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body" id="toast-texto">Mensaje de ejemplo</div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
             </div>
         </div>
     </div>
 
     <footer class="bg-white text-black text-center py-3 mt-5 shadow-top">
         &copy; 2025 Programación IV - Ian Villegas
-</footer>
+    </footer>
 </div>
 <!-- Importacion JS -->
 <script src="../js/auth.js"></script>

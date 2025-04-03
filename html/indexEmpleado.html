@@ -1,249 +1,260 @@
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>RUD - Empleados</title>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>RUD - Empleados</title>
 
-        <!-- Bootstrap CSS -->
-        <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
-        <script crossorigin="anonymous"
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-                src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" rel="stylesheet">
+    <script crossorigin="anonymous"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-        <!-- DataTables -->
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="../css/style.css">
-        <link rel="stylesheet" href="../css/navbar.css">
-        <link rel="stylesheet" href="../css/tabla.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/tabla.css">
 
-    </head>
-    <body>
-    <div class="wrapper">
-        <div class="content">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-white bg-white shadow-sm">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="../img/icoSIUA.png" alt="Logo" style="height: 50px; margin-right: 10px;">
-                <!--SIUA-->
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">
-                            <i class="bi bi-house-door-fill"></i>
-                            Inicio</a>
-                    </li>
-                    <!-- Dropdown para EMPLEADO -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="empleadoDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-badge-fill"></i>
-                            Empleado
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="empleadoDropdown">
-                            <li><a class="dropdown-item" href="frmEmpleado.html">
-                                <i class="bi bi-person-fill-add"></i>
-                                Registrar Empleado</a></li>
-                            <li><a class="dropdown-item" href="indexEmpleado.html">
-                                <i class="bi bi-person-lines-fill"></i>
-                                Lista de Empleados</a></li>
-                        </ul>
-                    </li>
+</head>
+<body>
+<div class="wrapper">
+    <div class="content">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-white bg-white shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="../img/icoSIUA.png" alt="Logo" style="height: 50px; margin-right: 10px;">
+                    <!--SIUA-->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="bi bi-house-door-fill"></i>
+                                Inicio</a>
+                        </li>
+                        <!-- Dropdown para EMPLEADO -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="empleadoDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-badge-fill"></i>
+                                Empleado
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="empleadoDropdown">
+                                <li><a class="dropdown-item" href="frmEmpleado.html">
+                                    <i class="bi bi-person-fill-add"></i>
+                                    Registrar Empleado</a></li>
+                                <li><a class="dropdown-item" href="indexEmpleado.html">
+                                    <i class="bi bi-person-lines-fill"></i>
+                                    Lista de Empleados</a></li>
+                            </ul>
+                        </li>
 
-                    <!-- Dropdown para EMPRESA -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="empresaDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-building-fill"></i>
-                            Empresa
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
-                            <li><a class="dropdown-item" href="frmEmpresa.html">
-                                <i class="bi bi-building-fill-add"></i>
-                                Registrar Empresa</a></li>
-                            <li><a class="dropdown-item" href="indexEmpresa.html">
-                                <i class="bi bi-list-ul"></i>
-                                Lista de Empresas</a></li>
-                        </ul>
-                    </li>
+                        <!-- Dropdown para EMPRESA -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="empresaDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-building-fill"></i>
+                                Empresa
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
+                                <li><a class="dropdown-item" href="frmEmpresa.html">
+                                    <i class="bi bi-building-fill-add"></i>
+                                    Registrar Empresa</a></li>
+                                <li><a class="dropdown-item" href="indexEmpresa.html">
+                                    <i class="bi bi-list-ul"></i>
+                                    Lista de Empresas</a></li>
+                            </ul>
+                        </li>
 
-                    <!-- Dropdown para Registro de entrada y salida -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="entraSaliDropdown" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-calendar-minus-fill"></i>
-                            Entrada y Salida
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
-                            <li><a class="dropdown-item" href=frmRegistro.html>
-                                <i class="bi bi-calendar2-plus-fill"></i>
-                                Registrar Entrada y Salida</a></li>
-                            <li><a class="dropdown-item" href="indexRegistro.html">
-                                <i class="bi bi-calendar2-week-fill"></i>
-                                Lista de Registro</a></li>
-                        </ul>
-                    </li>
+                        <!-- Dropdown para Registro de entrada y salida -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="entraSaliDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-calendar-minus-fill"></i>
+                                Entrada y Salida
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="empresaDropdown">
+                                <li><a class="dropdown-item" href=frmRegistro.html>
+                                    <i class="bi bi-calendar2-plus-fill"></i>
+                                    Registrar Entrada y Salida</a></li>
+                                <li><a class="dropdown-item" href="indexRegistro.html">
+                                    <i class="bi bi-calendar2-week-fill"></i>
+                                    Lista de Registro</a></li>
+                            </ul>
+                        </li>
 
-                    <!-- Dorpdown Reportes -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="reporte" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-clipboard2-data-fill"></i>
-                            Reporte
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="reporteDropdown">
-                            <li><a class="dropdown-item" href=reporte.html>
-                                <i class="bi bi-bar-chart-fill"></i>
-                                Gráficos</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                        <!-- Dorpdown Reportes -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="reporte" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-clipboard2-data-fill"></i>
+                                Reporte
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="reporteDropdown">
+                                <li><a class="dropdown-item" href=reporte.html>
+                                    <i class="bi bi-bar-chart-fill"></i>
+                                    Gráficos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
 
-                <div class="ms-auto d-flex align-items-center gap-3">
-                    <div class="bg-white rounded px-3 py-1 d-flex align-items-center border border-secondary">
-                        <i class="bi bi-person-circle me-2 text-secondary"></i>
-                        <span class="fw-semibold text-dark" id="bienvenida"></span>
+                    <div class="ms-auto d-flex align-items-center gap-3">
+                        <div class="bg-white rounded px-3 py-1 d-flex align-items-center border border-secondary">
+                            <i class="bi bi-person-circle me-2 text-secondary"></i>
+                            <span class="fw-semibold text-dark" id="bienvenida"></span>
+                        </div>
+                        <button class="btn btn-white btn-outline-danger rounded px-3 py-1"
+                                onclick="logout()">
+                            <i class="bi bi-door-closed-fill"></i> LogOut
+                        </button>
                     </div>
-                    <button class="btn btn-white btn-outline-danger rounded px-3 py-1"
-                            onclick="logout()">
-                        <i class="bi bi-door-closed-fill"></i> LogOut
+                </div>
+            </div>
+        </nav>
+
+        <div class="container mt-4 mb-5">
+            <h1 class="text-center mb-4">Empleados Registrados</h1>
+            <div class="d-flex justify-content-start align-items-center gap-2 mb-3">
+                <!-- Botón Nuevo Registro -->
+                <a href="frmEmpleado.html" class="btn btn-outline-primary d-flex align-items-center justify-content-center">
+                    <i class="bi bi-plus-circle fs-5"></i>
+                </a>
+
+                <!-- Dropdown Exportar -->
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="exportDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-download me-1"></i> Exportar
                     </button>
+                    <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                        <li><a class="dropdown-item" href="#" onclick="exportarPDF()">
+                            <i class="bi bi-file-earmark-pdf-fill text-danger me-1"></i> Exportar a PDF</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="exportarExcel()">
+                            <i class="bi bi-file-earmark-excel-fill text-success me-1"></i> Exportar a Excel</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Tabla de empleados -->
+            <div class="table-responsive">
+                <table class="table table-striped table-hover nowrap">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>ID</th>
+                        <th>Correo</th>
+                        <th>Dirección</th>
+                        <th>Nacimiento</th>
+                        <th>Teléfono</th>
+                        <th>Cargo</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                        <th>Empresa</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody id="empleados-list"></tbody>
+                </table>
+                <!-- script -->
+                <script type="text/javascript">
+                    document.addEventListener('DOMContentLoaded', function () {
+                        cargarEmpleado();
+                        localStorage.removeItem("editIndex");
+                    });
+                </script>
+            </div>
+        </div>
+        <!-- Modal - En lugar del popup-->
+        <div class="modal fade" id="sinEmpleados" tabindex="-1" aria-labelledby="sinEmpleadosTitulo" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title" id="eliminarRegistroLabel">¡Advertencia!</h5>
+                        <!--<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                 aria-label="Cerrar"></button>-->
+                    </div>
+                    <div class="modal-body">
+                        No hay empleados registrados.
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"
+                                onclick="ocultarModal()">Cerrar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
-
-    <div class="container mt-4 mb-5">
-        <h1 class="text-center mb-4">Empleados Registrados</h1>
-        <!-- Botón de exportación -->
-        <div class="dropdown mb-3">
-            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="exportDropdown"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-download me-1"></i> Exportar
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="exportDropdown">
-                <li><a class="dropdown-item" href="#" onclick="exportarPDF()">
-                    <i class="bi bi-file-earmark-pdf-fill text-danger me-1"></i> Exportar a PDF</a></li>
-                <li><a class="dropdown-item" href="#" onclick="exportarExcel()">
-                    <i class="bi bi-file-earmark-excel-fill text-success me-1"></i> Exportar a Excel</a></li>
-            </ul>
-        </div>
-
-        <!-- Tabla de empleados -->
-        <div class="table-responsive">
-            <table class="table table-striped table-hover nowrap">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>ID</th>
-                    <th>Correo</th>
-                    <th>Dirección</th>
-                    <th>Nacimiento</th>
-                    <th>Teléfono</th>
-                    <th>Cargo</th>
-                    <th>Rol</th>
-                    <th>Estado</th>
-                    <th>Empresa</th>
-                    <th>Acciones</th>
-                </tr>
-                </thead>
-                <tbody id="empleados-list"></tbody>
-            </table>
-            <!-- script -->
-            <script type="text/javascript">
-                document.addEventListener('DOMContentLoaded', function () {
-                    cargarEmpleado();
-                    localStorage.removeItem("editIndex");
-                });
-            </script>
-        </div>
-    </div>
-    <!-- Modal - En lugar del popup-->
-    <div class="modal fade" id="sinEmpleados" tabindex="-1" aria-labelledby="sinEmpleadosTitulo" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title" id="sinEmpleadosTitulo">¡Advertencia!</h5>
-                    <!-- data-bs-dismiss="modal": Indica a Bootstrap que este botón debe cerrar el modal cuando se hace clic en él -->
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    No hay empleados registrados.
-                </div>
-                <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" onclick="ocultarModal()">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        function ocultarModal() {
-            let modalElement = document.getElementById("sinEmpleados");
-            let modalInstance = bootstrap.Modal.getInstance(modalElement);
-            if (modalInstance) {
-                modalInstance.hide();
+        <script>
+            function ocultarModal() {
+                let modalElement = document.getElementById("sinEmpleados");
+                let modalInstance = bootstrap.Modal.getInstance(modalElement);
+                if (modalInstance) {
+                    modalInstance.hide();
+                }
+                document.body.classList.remove('modal-open');
+                document.querySelector('.modal-backdrop').remove();
             }
-            document.body.classList.remove('modal-open');
-            document.querySelector('.modal-backdrop').remove();
-        }
-    </script>
-    <!-- Modal de confirmación de eliminación -->
-    <div class="modal fade" id="confirmarEliminacion" tabindex="-1" aria-labelledby="confirmarEliminacionTitulo"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header border-0">
-                    <h5 class="modal-title" id="confirmarEliminacionTitulo">¡Confirmar Eliminación!</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ¿Desea eliminar este empleado?
-                </div>
-                <div class="modal-footer border-0">
-                    <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-outline-danger" id="confirmarEliminacionBtn">Eliminar</button>
+        </script>
+        <!-- Modal de confirmación de eliminación -->
+        <div class="modal fade" id="confirmarEliminacion" tabindex="-1" aria-labelledby="confirmarEliminacionTitulo"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title" id="confirmarEliminacionTitulo">¡Confirmar Eliminación!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Desea eliminar este empleado?
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-outline-danger" id="confirmarEliminacionBtn">Eliminar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-        </div>
-        <!-- TOASTS -->
-        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
-            <div id="toast-mensaje" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="d-flex">
-                    <div class="toast-body" id="toast-texto">Mensaje de ejemplo</div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
+    <!-- TOASTS -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+        <div id="toast-mensaje" class="toast align-items-center text-white bg-success border-0" role="alert"
+             aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toast-texto">Mensaje de ejemplo</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
             </div>
         </div>
+    </div>
 
-        <footer class="bg-white text-black text-center py-3 mt-5 shadow-top">
-            &copy; 2025 Programación IV - Ian Villegas
+    <footer class="bg-white text-black text-center py-3 mt-5 shadow-top">
+        &copy; 2025 Programación IV - Ian Villegas
     </footer>
-    </div>
-    <!-- Importacion JS -->
-    <script src="../js/auth.js"></script>
-    <script>verificarAutenticacion();</script>
-    <script src="../js/empleado.js"></script>
-    <script src="../js/navbar.js"></script>
-    </body>
-    </html>
+</div>
+<!-- Importacion JS -->
+<script src="../js/auth.js"></script>
+<script>verificarAutenticacion();</script>
+<script src="../js/empleado.js"></script>
+<script src="../js/navbar.js"></script>
+</body>
+</html>

@@ -33,14 +33,14 @@ function generarGraficoIngresos(registros) {
         },
         options: {
             responsive: true,
-            plugins: { legend: { display: false } },
+            plugins: {legend: {display: false}},
             scales: {
                 y: {
                     beginAtZero: true,
-                    title: { display: true, text: 'Ingresos' }
+                    title: {display: true, text: 'Ingresos'}
                 },
                 x: {
-                    title: { display: true, text: 'Personas' }
+                    title: {display: true, text: 'Personas'}
                 }
             }
         }
@@ -73,10 +73,12 @@ function generarGraficoOficinas(registros) {
         options: {
             responsive: true,
             plugins: {
-                legend: { position: 'right' },
-                tooltip: { callbacks: {
+                legend: {position: 'right'},
+                tooltip: {
+                    callbacks: {
                         label: ctx => `${ctx.label}: ${ctx.parsed} ingresos`
-                    }}
+                    }
+                }
             }
         }
     });
@@ -91,33 +93,29 @@ function generarColorAleatorio() {
 
 // Personas actualmente dentro (ingreso sin salida posterior)
 function listarPersonasDentro(registros) {
-    const personasDentro = [];
+    const ultimoMovimiento = {};
 
-    const ingresos = registros.filter(r => r.tipo === "Ingreso");
-
-    ingresos.forEach(ingreso => {
-        const salidaPosterior = registros.find(r =>
-            r.persona === ingreso.persona &&
-            r.oficina === ingreso.oficina &&
-            r.tipo === "Salida" &&
-            new Date(r.fechaHora) > new Date(ingreso.fechaHora)
-        );
-
-        if (!salidaPosterior) {
-            personasDentro.push(ingreso);
-        }
+    // Guardar el último movimiento por persona
+    registros.forEach(r => {
+        ultimoMovimiento[r.persona] = r;
     });
 
+    // Filtrar personas cuyo último movimiento fue de tipo "Ingreso"
+    const personasDentro = Object.values(ultimoMovimiento).filter(r => r.tipo === "Ingreso");
+
     const lista = document.getElementById("listaPersonasDentro");
+    lista.innerHTML = "";
+
     if (personasDentro.length === 0) {
-        lista.innerHTML = `<li class="list-group-item">No hay personas actualmente dentro.</li>`;
+        lista.innerHTML = `<li class="list-group-item">No hay personas actualmente dentro...<i class="bi bi-person-walking"></i></li>`;
         return;
     }
 
     personasDentro.forEach(p => {
         const li = document.createElement("li");
         li.className = "list-group-item";
-        li.textContent = `${p.persona} en ${p.oficina} desde ${p.fechaHora.replace("T", " ")}`;
+        li.innerHTML = `<i class="bi bi-person-fill-check text-success me-2"></i> ${p.persona} en <strong>${p.oficina}</strong> desde ${p.fechaHora.replace("T", " ")}`;
         lista.appendChild(li);
     });
 }
+

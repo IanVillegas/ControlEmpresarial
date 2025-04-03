@@ -39,7 +39,7 @@ function guardarEmpresa(event) {
     }
 
     // Crear objeto empresa
-    let empresa = { nombre, capacidadMaxima, latitud, longitud };
+    let empresa = {nombre, capacidadMaxima, latitud, longitud};
 
     if (index !== null) {
         empresas[index] = empresa;
@@ -63,7 +63,7 @@ function cargarEmpresas() {
     } else {
         empresas.forEach((empresa, index) => {
             const staticMapUrl
-             =`https://maps.googleapis.com/maps/api/staticmap?center=${empresa.latitud},${empresa.longitud}&zoom=15&size=200x150&markers=color:red%7C${empresa.latitud},${empresa.longitud}&key=AIzaSyB4cUgCX8WiVbCJ4_tLGtieh08W5lVTTjU`;
+                = `https://maps.googleapis.com/maps/api/staticmap?center=${empresa.latitud},${empresa.longitud}&zoom=15&size=200x150&markers=color:red%7C${empresa.latitud},${empresa.longitud}&key=AIzaSyB4cUgCX8WiVbCJ4_tLGtieh08W5lVTTjU`;
             let fila = `<tr>
                     <td>${index + 1}</td>
                     <td>${empresa.nombre}</td>
@@ -97,7 +97,7 @@ function abrirMapaInteractivo(lat, lng) {
 
     // Esperar un poquito para asegurar que el modal se haya renderizado
     setTimeout(() => {
-        const ubicacion = { lat: lat, lng: lng };
+        const ubicacion = {lat: lat, lng: lng};
         const map = new google.maps.Map(document.getElementById("modalMap"), {
             zoom: 15,
             center: ubicacion,
@@ -131,8 +131,20 @@ function confirmarEliminacion() {
 
 function eliminarEmpresa(index) {
     let empresas = JSON.parse(localStorage.getItem("empresas")) || [];
+    let empleados = JSON.parse(localStorage.getItem("empleados")) || [];
 
     if (index >= 0 && index < empresas.length) {
+        const empresa = empresas[index];
+
+        // Verificar si hay empleados asociados a esta empresa
+        const empleadosAsociados = empleados.filter(emp => emp.empresa === empresa.nombre);
+
+        if (empleadosAsociados.length > 0) {
+            mostrarToast(`No se puede eliminar. Hay ${empleadosAsociados.length} empleado(s) registrados en esta oficina.`, "warning");
+            return;
+        }
+
+        // Si no hay empleados, continuar con la eliminación
         empresas.splice(index, 1);
         localStorage.setItem("empresas", JSON.stringify(empresas));
         cargarEmpresas();
@@ -140,6 +152,7 @@ function eliminarEmpresa(index) {
         console.error("Índice no válido:", index);
     }
 }
+
 
 function editarEmpresa(index) {
     localStorage.setItem("editIndex", index);

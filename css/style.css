@@ -26,7 +26,7 @@ footer {
 }
 
 /*login*/
-.container-img-principal{
+.container-img-principal {
     background-image: url('../img/abstract-envelope.svg');
     background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el contenedor */
     background-position: center; /* Centra la imagen en el contenedor */

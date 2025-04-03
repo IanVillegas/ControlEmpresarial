@@ -8,6 +8,7 @@ function mostrarAlerta(mensaje) {
         alert(mensaje);
     }
 }
+
 // Función para iniciar sesión
 
 function login(event) {
@@ -16,9 +17,9 @@ function login(event) {
     const password = document.getElementById("password").value.trim();
 
     const usuarios = [
-        { usuario: "admin", password: "1", rol: "admin" },
-        { usuario: "registrador", password: "12", rol: "registrador" },
-        { usuario: "visor", password: "123", rol: "visor" }
+        {usuario: "admin", password: "1", rol: "admin"},
+        {usuario: "registrador", password: "12", rol: "registrador"},
+        {usuario: "visor", password: "123", rol: "visor"}
     ];
 
     const usuarioEncontrado = usuarios.find(user =>
@@ -74,7 +75,7 @@ function aplicarPermisos(rol) {
 function deshabilitarAcceso(paginasRestringidas) {
     const actual = window.location.pathname.split("/").pop();
     if (paginasRestringidas.includes(actual)) {
-        mostrarAlerta("No tienes permiso para acceder a esta página.");
+        mostrarAlerta("No tiene permiso para acceder a esta página.");
         setTimeout(() => window.location.href = "index.html", 2500);
     }
 }
